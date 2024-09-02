@@ -1,6 +1,8 @@
 # Application definition
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    "db.users.apps.UsersConfig",
+]
 
 THIRD_PARTY_APPS = [
     "corsheaders",
