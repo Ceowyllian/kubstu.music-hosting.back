@@ -26,6 +26,7 @@ black = "24.8.0"
 pre-commit = "3.8.0"
 coverage = "7.6.1"
 factory-boy = "3.3.1"
+python-semantic-release = "9.8.8"
 
 [requires]
 python_version = "3.12"
