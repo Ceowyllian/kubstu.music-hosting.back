@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## v2.1.0 (2024-09-06)
+
+### Feature
+
+* feat(db): add a db model for a track like ([`0cafb39`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/0cafb392fb9b54f35ee59701063ae112d3f744ee))
+
+* feat(db): add a db model for a playlist ([`8e965be`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/8e965bef5ba3f29e3a58ecabb1278059ba7f741e))
+
+* feat(db): add a db model for a track ([`0946d3b`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/0946d3b4d72b11fc6522d04e006bfbcffdbd2024))
+
+* feat(social): add a db model for a person ([`6fce200`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/6fce200459ba449185e0d504b81a8832b7c020eb))
+
+* feat(music): create a package for music models ([`70f9b5e`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/70f9b5e5ccfc9cc5ac6550c38bb33be598fed766))
+
+* feat: add media settings ([`eaea217`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/eaea21738912ee3477e09276c4b07447e1375333))
+
+### Refactor
+
+* refactor(db): remove WithOwnerMixin class ([`7a2ba27`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/7a2ba27e9cc1e47fe825fcbdb5b75502544e5484))
+
+### Style
+
+* style: run &#34;make format&#34; ([`caeedfe`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/caeedfe4775d5ad3508ec39d67f98ec5397ef424))
+
 ## v2.0.0 (2024-09-03)
 
 ### Breaking
