@@ -1,2 +1,2 @@
+from db.social.models.like import LikeBase, PlaylistLike, TrackLike
 from db.social.models.person import Person
-from db.social.models.track_like import TrackLike
