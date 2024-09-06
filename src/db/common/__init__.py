@@ -1,1 +1,1 @@
-from models import BaseModel, WithOwnerMixin
+from models import BaseModel
