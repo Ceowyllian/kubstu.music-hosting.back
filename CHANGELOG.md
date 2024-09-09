@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## v3.0.0 (2024-09-09)
+
+### Breaking
+
+* feat(social)!: make migrations
+
+BREAKING-CHANGE: drop all under &#34;music&#34; and &#34;social&#34; before updating to this ([`b104674`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/b10467484637ee1c3386a9e4b85c9d28b9cc5c80))
+
+### Chore
+
+* chore(make): rename &#34;make-migrations&#34; goal to &#34;migrations&#34; ([`10ec451`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/10ec451a07eb6e0f94e27dbefbeb66f3b9943750))
+
+* chore(deps): install pillow ([`bebff30`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/bebff30c2d8d1d825c749bf06095cba82753091c))
+
+### Feature
+
+* feat(social): add models for likes ([`c47821d`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/c47821de34da9f8c09d623097c2a343a18fd2476))
+
+* feat(social): add models for comments ([`98adbf0`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/98adbf0fc14eb5640b0489b36d56bff8d06cfa77))
+
+* feat(social): add a function to create a target field in the comment and like models ([`b8cb2c0`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/b8cb2c0e2c76cd09823761302a7f55b95875ac67))
+
+* feat(db): add a db model for a playlist like ([`75a2a57`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/75a2a57218737e72457f19fbf76c652ec8e5d9a3))
+
+### Fix
+
+* fix(db): fix path to the BaseModel class ([`0f28a21`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/0f28a21705cebd8a0cfdf4395bf5ec4c53eb3ce3))
+
 ## v2.1.0 (2024-09-06)
 
 ### Feature
