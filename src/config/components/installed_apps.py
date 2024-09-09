@@ -2,6 +2,8 @@
 
 LOCAL_APPS = [
     "db.users.apps.UsersConfig",
+    "db.music.apps.MusicConfig",
+    "db.social.apps.SocialConfig",
 ]
 
 THIRD_PARTY_APPS = [
