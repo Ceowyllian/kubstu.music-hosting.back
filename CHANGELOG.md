@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v4.0.0 (2024-09-09)
+
+### Breaking
+
+* feat(social)!: use a dedicated field in all models that have an owner
+
+BREAKING-CHANGE: drop all under &#34;music&#34; and &#34;social&#34; before updating to this ([`7f6017f`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/7f6017fd39d8f87b1d21d6be7cfe85316deb00c4))
+
+* feat(music)!: add &#34;duration&#34; and &#34;release_date&#34; fields
+
+BREAKING-CHANGE: drop all under &#34;music&#34; before updating to this ([`5caad19`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/5caad195b123c48246b919c6574d5f203e499db3))
+
+### Feature
+
+* feat(social): add &#34;WithOwnerMixin&#34; class ([`2cc0a0e`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/2cc0a0e625ce38ab5f2a9e4b08a488ee9b56ef62))
+
 ## v3.0.0 (2024-09-09)
 
 ### Breaking
