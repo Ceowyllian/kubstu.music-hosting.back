@@ -9,20 +9,7 @@ __all__ = [
     "PlaylistLike",
 ]
 
-
-def make_target_field(path_to_model: str):
-    """
-    :param path_to_model: should be a dotted path to django model "app_label.ModelClass"
-    """
-    model_name = path_to_model.split(".")[-1]
-    return models.ForeignKey(
-        to=model_name,
-        on_delete=models.RESTRICT,
-        null=False,
-        blank=False,
-        editable=False,
-        verbose_name=_(model_name),
-    )
+from db.social.models.base import make_target_field
 
 
 class LikeBase(BaseModel):
