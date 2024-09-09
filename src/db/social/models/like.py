@@ -10,24 +10,20 @@ __all__ = [
 ]
 
 from db.social.models.base import make_target_field
+from db.social.models.owner_mixin import WithOwnerMixin
 
 
-class LikeBase(BaseModel):
+class LikeBase(
+    BaseModel,
+    WithOwnerMixin,
+):
     target: type[models.Model] = None
-    liked_by = models.ForeignKey(
-        to="social.Person",
-        on_delete=models.RESTRICT,
-        null=False,
-        blank=False,
-        editable=False,
-        verbose_name=_("Liked by"),
-    )
 
     class Meta(BaseModel.Meta):
         abstract = True
         constraints = [
             models.UniqueConstraint(
-                fields=("liked_by", "target"),
+                fields=("owner", "target"),
                 name="unique_%(class)s",
             ),
         ]

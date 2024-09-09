@@ -8,8 +8,13 @@ __all__ = [
     "Track",
 ]
 
+from db.social.models.owner_mixin import WithOwnerMixin
 
-class Track(BaseModel):
+
+class Track(
+    BaseModel,
+    WithOwnerMixin,
+):
 
     sound_file = models.FileField(
         upload_to="tracks",
@@ -51,16 +56,6 @@ class Track(BaseModel):
         null=True,
         editable=True,
         verbose_name=_("Release date"),
-    )
-    uploaded_by = models.ForeignKey(
-        "social.Person",
-        on_delete=models.RESTRICT,
-        blank=False,
-        null=False,
-        editable=False,
-        related_name="uploaded_tracks",
-        related_query_name="uploaded_track",
-        verbose_name=_("Uploaded by"),
     )
 
     class Meta:

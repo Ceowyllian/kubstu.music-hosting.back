@@ -7,19 +7,13 @@ __all__ = [
     "Playlist",
 ]
 
+from db.social.models import WithOwnerMixin
 
-class Playlist(BaseModel):
 
-    created_by = models.ForeignKey(
-        "social.Person",
-        on_delete=models.RESTRICT,
-        null=False,
-        blank=False,
-        editable=False,
-        related_name="created_playlists",
-        related_query_name="created_playlist",
-        verbose_name=_("Created by"),
-    )
+class Playlist(
+    BaseModel,
+    WithOwnerMixin,
+):
     name = models.TextField(
         blank=False,
         null=False,
@@ -28,8 +22,8 @@ class Playlist(BaseModel):
     )
     tracks = models.ManyToManyField(
         to="music.Track",
-        verbose_name=_("Tracks"),
         related_name=_("playlists"),
+        verbose_name=_("Tracks"),
     )
 
     class Meta:

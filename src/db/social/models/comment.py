@@ -10,17 +10,14 @@ __all__ = [
     "PlaylistComment",
 ]
 
+from db.social.models.owner_mixin import WithOwnerMixin
 
-class CommentBase(BaseModel):
+
+class CommentBase(
+    BaseModel,
+    WithOwnerMixin,
+):
     target: type[models.Model] = None
-    author = models.ForeignKey(
-        to="social.Person",
-        on_delete=models.RESTRICT,
-        null=False,
-        blank=False,
-        editable=False,
-        verbose_name=_("Author"),
-    )
 
     class Meta(BaseModel.Meta):
         abstract = True
