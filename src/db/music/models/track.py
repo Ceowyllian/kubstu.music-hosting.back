@@ -40,6 +40,18 @@ class Track(BaseModel):
         null=True,
         verbose_name=_("Song description"),
     )
+    duration = models.DurationField(
+        blank=False,
+        null=False,
+        editable=False,
+        verbose_name=_("Duration"),
+    )
+    release_date = models.DateField(
+        blank=True,
+        null=True,
+        editable=True,
+        verbose_name=_("Release date"),
+    )
     uploaded_by = models.ForeignKey(
         "social.Person",
         on_delete=models.RESTRICT,
