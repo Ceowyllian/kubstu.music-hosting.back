@@ -17,7 +17,7 @@ flake8:
 format:
 	$(v) && black . && isort .
 
-make-migrations:
+migrations:
 	$(v) && python src\manage.py makemigrations
 
 migrate:
