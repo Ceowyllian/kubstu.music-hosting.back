@@ -8,6 +8,7 @@ __all__ = [
     "CommentBase",
     "TrackComment",
     "PlaylistComment",
+    "AlbumComment",
 ]
 
 from db.social.models.owner_mixin import WithOwnerMixin
@@ -18,6 +19,12 @@ class CommentBase(
     WithOwnerMixin,
 ):
     target: type[models.Model] = None
+    subject = models.TextField(
+        blank=False,
+        null=False,
+        editable=True,
+        verbose_name=_("Subject"),
+    )
 
     class Meta(BaseModel.Meta):
         abstract = True
@@ -37,3 +44,11 @@ class PlaylistComment(CommentBase):
     class Meta(CommentBase.Meta):
         verbose_name = _("Playlist comment")
         verbose_name_plural = _("Playlist comments")
+
+
+class AlbumComment(CommentBase):
+    target = make_target_field("music.Album")
+
+    class Meta(CommentBase.Meta):
+        verbose_name = _("Album comment")
+        verbose_name_plural = _("Album comments")
