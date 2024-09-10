@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v5.0.0 (2024-09-10)
+
+### Breaking
+
+* feat(social)!: add the subject field to all comment models
+
+BREAKING-CHANGE: drop all under &#34;music&#34; and before updating to this ([`d68e4c3`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/d68e4c3498d79996747b7ee91086588efb2adb52))
+
 ## v4.0.0 (2024-09-09)
 
 ### Breaking
