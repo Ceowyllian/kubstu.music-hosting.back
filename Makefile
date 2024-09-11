@@ -24,4 +24,4 @@ migrate:
 	$(v) && python src\manage.py migrate
 
 version:
-	$(v) && git checkout master && git rebase --onto dev && semantic-release version
+	$(v) && git checkout master && git rebase --onto dev && semantic-release version && git checkout dev && git rebase --onto master && git push --all
