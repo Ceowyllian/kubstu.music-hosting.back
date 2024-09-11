@@ -58,6 +58,9 @@ class Track(
         verbose_name=_("Release date"),
     )
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         verbose_name = _("Track")
         verbose_name_plural = _("Tracks")

@@ -36,6 +36,9 @@ class Album(
         verbose_name=_("Tracks"),
     )
 
+    def __str__(self):
+        return self.title
+
     class Meta(BaseModel.Meta):
         verbose_name = _("Album")
         verbose_name_plural = _("Playlists")

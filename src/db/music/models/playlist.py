@@ -26,6 +26,9 @@ class Playlist(
         verbose_name=_("Tracks"),
     )
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = _("Playlist")
         verbose_name_plural = _("Playlists")

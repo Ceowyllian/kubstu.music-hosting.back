@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 from db.common import BaseModel
 from db.social.models.base import make_target_field
+from db.social.models.owner_mixin import WithOwnerMixin
 
 __all__ = [
     "CommentBase",
@@ -10,8 +11,6 @@ __all__ = [
     "PlaylistComment",
     "AlbumComment",
 ]
-
-from db.social.models.owner_mixin import WithOwnerMixin
 
 
 class CommentBase(
@@ -25,6 +24,9 @@ class CommentBase(
         editable=True,
         verbose_name=_("Subject"),
     )
+
+    def __str__(self):
+        return f"{self.owner.username} - {self.subject}"
 
     class Meta(BaseModel.Meta):
         abstract = True
