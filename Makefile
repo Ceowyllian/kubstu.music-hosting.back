@@ -22,3 +22,6 @@ migrations:
 
 migrate:
 	$(v) && python src\manage.py migrate
+
+version:
+	$(v) && git checkout master && git rebase --onto dev && semantic-release version
