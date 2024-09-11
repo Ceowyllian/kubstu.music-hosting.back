@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v5.1.0 (2024-09-11)
+
+### Chore
+
+* chore(make): add &#34;version&#34; Make goal ([`36b3e46`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/36b3e46514bd5375a7cf90db35f24cf653972fbc))
+
+### Feature
+
+* feat: define __str__ method in models ([`ea418f0`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/ea418f029e5a0a9e06b61db4cc589ddb51a31c10))
+
 ## v5.0.0 (2024-09-10)
 
 ### Breaking
