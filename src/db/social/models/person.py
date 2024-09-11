@@ -42,6 +42,10 @@ class Person(BaseModel):
         related_name="followers",
         related_query_name="follower",
     )
+    subscribers = models.ManyToManyField(
+        to="self",
+        related_query_name="subscriber",
+    )
 
     def __str__(self):
         return self.user.username
