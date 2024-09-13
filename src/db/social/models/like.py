@@ -44,3 +44,11 @@ class PlaylistLike(LikeBase):
     class Meta(LikeBase.Meta):
         verbose_name = _("Playlist like")
         verbose_name_plural = _("Playlist likes")
+
+
+class AlbumLike(LikeBase):
+    target = make_target_field("music.Album")
+
+    class Meta(LikeBase.Meta):
+        verbose_name = _("Album like")
+        verbose_name_plural = _("Album likes")
