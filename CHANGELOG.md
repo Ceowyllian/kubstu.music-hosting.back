@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v6.0.0 (2024-09-13)
+
+### Breaking
+
+* feat(social)!: add models for reposts ([`2ded5ee`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/2ded5ee89acd1e5517ce85cc186f4d054953062e))
+
+* feat(social)!: add &#34;subscribers&#34; field to the Person model ([`233e8cf`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/233e8cfc4c85f13820fa1a2be34362fd10337686))
+
+### Chore
+
+* chore(make): add git push to Make&#39;s &#34;version&#34; goal ([`8402663`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/840266347d7bb85c214f7bb03a8028485c265d92))
+
+### Feature
+
+* feat(social): add AlbumLike model ([`967bb3b`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/967bb3b77a3dc2c46daad1c02380dcf8787b0bbd))
+
 ## v5.1.0 (2024-09-11)
 
 ### Chore
