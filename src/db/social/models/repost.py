@@ -1,24 +1,12 @@
-from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from db.common.models import BaseModel
-from db.social.models import WithOwnerMixin
-from db.social.models.base import make_target_field
+from db.social.models.base import RepostBase, make_target_field
 
-
-class RepostBase(
-    BaseModel,
-    WithOwnerMixin,
-):
-    target: type[models.Model] = None
-
-    class Meta(BaseModel.Meta):
-        abstract = True
-        constraints = [
-            models.UniqueConstraint(
-                fields=("owner", "target"), name="unique_%(class)s"
-            ),
-        ]
+__all__ = [
+    "TrackRepost",
+    "PlaylistRepost",
+    "AlbumRepost",
+]
 
 
 class TrackRepost(RepostBase):
