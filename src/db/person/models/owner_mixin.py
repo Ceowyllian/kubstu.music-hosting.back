@@ -9,7 +9,7 @@ __all__ = [
 class WithOwnerMixin(models.Model):
 
     owner = models.ForeignKey(
-        "social.Person",
+        "person.Person",
         on_delete=models.RESTRICT,
         blank=False,
         null=False,

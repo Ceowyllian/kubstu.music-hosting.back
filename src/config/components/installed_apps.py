@@ -3,6 +3,7 @@
 LOCAL_APPS = [
     "db.users.apps.UsersConfig",
     "db.music.apps.MusicConfig",
+    "db.person.apps.PersonConfig",
     "db.social.apps.SocialConfig",
 ]
 

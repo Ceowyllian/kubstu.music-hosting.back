@@ -2,12 +2,11 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from db.common import BaseModel
+from db.person.models import WithOwnerMixin
 
 __all__ = [
     "Album",
 ]
-
-from db.social.models.owner_mixin import WithOwnerMixin
 
 
 class Album(
