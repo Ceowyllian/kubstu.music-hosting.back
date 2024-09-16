@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## v7.0.0 (2024-09-16)
+
+### Breaking
+
+* feat(person)!: add model for person roles ([`4f721aa`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/4f721aa5896e9a7d42e6c7b855774ccbb03a8d8c))
+
+* feat(person)!: move the Person model and WithOwnerMixin into a separate package
+
+BREAKING-CHANGE: drop all under &#34;music&#34; and &#34;social&#34; before updating to this ([`a7a8ee6`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/a7a8ee62613bfcc6a13f174a7660795642539944))
+
+### Refactor
+
+* refactor(social): inherit models of comments, likes and reposts from the base SocialModel ([`bd0a404`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/bd0a40404243986f6adaea453101e76011a56ab9))
+
 ## v6.0.0 (2024-09-13)
 
 ### Breaking
