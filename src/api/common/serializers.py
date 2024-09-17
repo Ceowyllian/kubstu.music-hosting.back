@@ -5,7 +5,9 @@ from db.common import BaseModel
 
 __all__ = [
     "ReadOnlyMixin",
+    "ModelSerializer",
     "DataObjectSerializer",
+    "EmptySerializer",
 ]
 
 
@@ -24,11 +26,21 @@ class ReadOnlyMixin:
         return "`%s` serializer is supposed to be read-only." % self.__class__.__name__
 
 
-class DataObjectSerializer(serializers.ModelSerializer):
+class ModelSerializer(serializers.ModelSerializer):
     id = serializers.UUIDField(
         read_only=True,
         help_text=_("Object ID"),
     )
+
+    class Meta:
+        model = BaseModel
+        abstract = True
+        fields = [
+            "id",
+        ]
+
+
+class DataObjectSerializer(ModelSerializer):
     created = serializers.DateTimeField(
         read_only=True,
         help_text=_("Creation date and time"),
@@ -38,11 +50,13 @@ class DataObjectSerializer(serializers.ModelSerializer):
         help_text=_("Modification date and time"),
     )
 
-    class Meta:
-        model = BaseModel
+    class Meta(ModelSerializer.Meta):
         abstract = True
-        fields = [
-            "id",
+        fields = ModelSerializer.Meta.fields + [
             "created",
             "modified",
         ]
+
+
+class EmptySerializer(serializers.Serializer):
+    pass
