@@ -1,9 +1,18 @@
-from rest_framework.permissions import BasePermission
+from rest_framework.permissions import (
+    AllowAny,
+    BasePermission,
+    IsAuthenticated,
+    IsAuthenticatedOrReadOnly,
+)
 
 from db.person.models import WithOwnerMixin
 
 __all__ = [
+    "AllowAny",
+    "IsAuthenticated",
+    "IsAuthenticatedOrReadOnly",
     "IsOwner",
+    "BasePermission",
 ]
 
 
