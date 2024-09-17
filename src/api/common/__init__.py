@@ -6,4 +6,5 @@ from .permissions import *  # noqa
 from .response import *  # noqa
 from .schema_tags import *  # noqa
 from .serializers import *  # noqa
+from .status import *  # noqa
 from .views import *  # noqa
