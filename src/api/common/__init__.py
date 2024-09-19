@@ -1,5 +1,5 @@
+from . import fields
 from .action import *  # noqa
-from .fields import *  # noqa
 from .filters import *  # noqa
 from .open_api import *  # noqa
 from .permissions import *  # noqa
