@@ -1,1 +1,2 @@
-from .track import TrackViewSet
+from .playlist import *  # noqa
+from .track import *  # noqa

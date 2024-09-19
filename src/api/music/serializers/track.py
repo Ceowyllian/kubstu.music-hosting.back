@@ -1,6 +1,4 @@
-from rest_framework import serializers
-
-from api.common.serializers import DataObjectSerializer, ReadOnlyMixin
+from api.common import DataObjectSerializer, EmptySerializer, ReadOnlyMixin, fields
 from db.music.models import GENRE_CHOICES, Track
 
 __all__ = [
@@ -36,29 +34,29 @@ class TrackListSerializer(DataObjectSerializer, ReadOnlyMixin):
         ]
 
 
-class TrackCreateSerializer(serializers.Serializer):
-    sound_file = serializers.FileField()
-    image = serializers.ImageField(
+class TrackCreateSerializer(EmptySerializer):
+    sound_file = fields.FileField()
+    image = fields.ImageField(
         required=False,
     )
-    genre = serializers.ChoiceField(
+    genre = fields.ChoiceField(
         choices=GENRE_CHOICES,
         required=False,
     )
-    title = serializers.CharField()
-    description = serializers.CharField(
+    title = fields.CharField()
+    description = fields.CharField(
         required=False,
     )
-    release_date = serializers.DateField(
+    release_date = fields.DateField(
         required=False,
     )
 
 
-class TrackUpdateSerializer(serializers.Serializer):
-    image = serializers.ImageField()
-    genre = serializers.ChoiceField(
+class TrackUpdateSerializer(EmptySerializer):
+    image = fields.ImageField()
+    genre = fields.ChoiceField(
         choices=GENRE_CHOICES,
     )
-    title = serializers.CharField()
-    description = serializers.CharField()
-    release_date = serializers.DateField()
+    title = fields.CharField()
+    description = fields.CharField()
+    release_date = fields.DateField()

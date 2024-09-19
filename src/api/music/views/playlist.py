@@ -14,44 +14,44 @@ from api.common import (
     status,
 )
 from api.music.serializers import (
-    TrackCreateSerializer,
-    TrackListSerializer,
-    TrackRetrieveSerializer,
-    TrackUpdateSerializer,
+    PlaylistCreateSerializer,
+    PlaylistSerializer,
+    PlaylistUpdateSerializer,
+    PlaylistWithTracksSerializer,
 )
-from db.music.models import Track
+from db.music.models import Playlist
 
 __all__ = [
-    "TrackViewSet",
+    "PlaylistViewSet",
 ]
 
 
 @extend_schema_view(
     list=extend_schema(
-        summary=_("List of tracks"),
-        responses={200: TrackListSerializer(many=True)},
+        summary=_("List of playlists"),
+        responses={200: PlaylistSerializer(many=True)},
     ),
     retrieve=extend_schema(
-        summary=_("Track"),
-        responses={200: TrackListSerializer},
+        summary=_("Playlist"),
+        responses={200: PlaylistWithTracksSerializer},
     ),
     create=extend_schema(
-        summary=_("Create track"),
-        request=TrackCreateSerializer,
-        responses={201: TrackRetrieveSerializer},
+        summary=_("Create playlist"),
+        request=PlaylistCreateSerializer,
+        responses={201: PlaylistWithTracksSerializer},
     ),
     partial_update=extend_schema(
-        summary=_("Update track"),
-        request=TrackUpdateSerializer(partial=True),
-        responses={200: TrackRetrieveSerializer},
+        summary=_("Update playlist"),
+        request=PlaylistUpdateSerializer(partial=True),
+        responses={200: PlaylistWithTracksSerializer},
     ),
     destroy=extend_schema(
-        summary=_("Delete track"),
+        summary=_("Delete playlist"),
         responses={204: None},
     ),
 )
 @extend_schema(tags=[SCHEMA_TAG_MUSIC])
-class TrackViewSet(
+class PlaylistViewSet(
     ModelViewSet,
 ):
     permission_classes = [
@@ -66,51 +66,42 @@ class TrackViewSet(
     filterset_fields = [
         "owner__id",
         "owner__user__username",
-        "genre",
-        "duration",
-        "release_date",
         "created",
         "modified",
     ]
     search_fields = [
-        "title",
-        "description",
-    ]
-    ordering_fields = [
-        "genre",
-        "title",
-        "duration",
-        "release_date",
+        "name",
+        "owner__user__username",
     ]
 
     def get_serializer_class(self):
         if self.action == "retrieve":
-            return TrackRetrieveSerializer
+            return PlaylistWithTracksSerializer
         if self.action == "list":
-            return TrackListSerializer
+            return PlaylistSerializer
 
     def get_queryset(self):
         # TODO use selector instead
-        return Track.objects.all()
+        return Playlist.objects.all()
 
     def create(self, request, *args, **kwargs):
-        input_ = TrackCreateSerializer(data=request.data)
+        input_ = PlaylistCreateSerializer(data=request.data)
         input_.is_valid(raise_exception=True)
 
-        # TODO: call track_create service
-        track = None
+        # TODO call playlist_create service
+        playlist = None
 
-        output = TrackRetrieveSerializer(instance=track)
+        output = PlaylistSerializer(instance=playlist)
         return Response(output.data, status.HTTP_201_CREATED)
 
     def update(self, request, *args, **kwargs):
-        input_ = TrackUpdateSerializer(data=request.data)
+        input_ = PlaylistUpdateSerializer(data=request.data)
         input_.is_valid(raise_exception=True)
 
-        # TODO: call track_update service
-        track = None
+        # TODO call playlist_update service
+        playlist = None
 
-        output = TrackRetrieveSerializer(instance=track)
+        output = PlaylistSerializer(instance=playlist)
         return Response(output.data, status.HTTP_200_OK)
 
     def destroy(self, request, *args, **kwargs):
