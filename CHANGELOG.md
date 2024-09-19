@@ -1,5 +1,47 @@
 # CHANGELOG
 
+## v7.1.0 (2024-09-19)
+
+### Feature
+
+* feat(api): add CRUD API stub for playlists ([`982e0e2`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/982e0e27354070432b28c4dc9c62022eec9c8642))
+
+* feat(music): add CRUD API stub for tracks ([`b9b946b`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/b9b946bcac52da1452120b3a42ce7f5b9468abea))
+
+* feat(api): exclude PATCH requests from ModelViewSet ([`bc0497f`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/bc0497f16db97d6ff1781dfe9731c65de19edbd2))
+
+* feat(api): add more permissions to api.common.permissions ([`90179b8`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/90179b8103e69b5679d878e24fd583dc5ac4374b))
+
+* feat(api): add http statuses api.common ([`7a48753`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/7a48753404a03615616fdcaaab46d7a548271edf))
+
+* feat(api): add &#34;action&#34; decorator to api.common ([`87eab39`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/87eab39dbc64fa571ae9d5264f7524b493b36aac))
+
+* feat(api): add common responses ([`a2b9062`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/a2b9062d0d877dc50fca92ac37703fcc2b50be33))
+
+* feat(api): add common filters ([`c69f6fa`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/c69f6fad95ff7b9661395a011327fa9de39fdb6c))
+
+* feat(api): add common openapi utils ([`c5684d1`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/c5684d19e7197ee31edd7c31901ab2a4d5ff7018))
+
+* feat(api): add common views ([`f1bce0e`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/f1bce0e645571a00b83af118db2de9beeb43de20))
+
+* feat(api): add common views ([`b5b75e2`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/b5b75e2e53ef498567c64a9d30262f02d9f4f8a2))
+
+* feat(api): add common fields ([`170bdcc`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/170bdcc6b98414d1b7a2b72dda48aa1ab1854685))
+
+* feat(api): add common schema tags ([`b3f22ca`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/b3f22caf83b87863a335339a02a1ee623b0343d9))
+
+* feat(api): add common serializers ([`1f6a17d`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/1f6a17d2a355dd756e974606e9262c6bbaa5d4d1))
+
+* feat(music): add package for music api ([`81e5bb9`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/81e5bb92eba54024bc6f3b431cd55f1cd002684b))
+
+* feat(api): add DataObjectSerializer ([`a207423`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/a20742343d82885d98cda0abcab1c94e83aac308))
+
+### Refactor
+
+* refactor(api): import &#34;fields&#34; module instead of all the field classes ([`4ef9944`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/4ef99446dda9a1c58a6c3fc57cd4f4766acfda8e))
+
+* refactor(music): add GENRE_CHOICES to db.music.models.__init__ ([`931b2d6`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/931b2d6dd072ccfe26ad312eb68166484adcc97d))
+
 ## v7.0.0 (2024-09-16)
 
 ### Breaking
