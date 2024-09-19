@@ -13,20 +13,23 @@ __all__ = [
 
 class ReadOnlyMixin:
     def save(self, **kwargs):
-        raise NotImplementedError(self.error_message)  # pragma: no cover
+        raise TypeError(self.error_message)  # pragma: no cover
 
     def create(self, validated_data):
-        raise NotImplementedError(self.error_message)  # pragma: no cover
+        raise TypeError(self.error_message)  # pragma: no cover
 
     def update(self, instance, validated_data):
-        raise NotImplementedError(self.error_message)  # pragma: no cover
+        raise TypeError(self.error_message)  # pragma: no cover
 
     @property
     def error_message(self):
         return "`%s` serializer is supposed to be read-only." % self.__class__.__name__
 
 
-class ModelSerializer(serializers.ModelSerializer):
+class ModelSerializer(
+    serializers.ModelSerializer,
+    ReadOnlyMixin,
+):
     id = serializers.UUIDField(
         read_only=True,
         help_text=_("Object ID"),

@@ -1,4 +1,4 @@
-from api.common import DataObjectSerializer, EmptySerializer, ReadOnlyMixin, fields
+from api.common import DataObjectSerializer, EmptySerializer, fields
 from db.music.models import GENRE_CHOICES, Track
 
 __all__ = [
@@ -9,7 +9,7 @@ __all__ = [
 ]
 
 
-class TrackRetrieveSerializer(DataObjectSerializer, ReadOnlyMixin):
+class TrackRetrieveSerializer(DataObjectSerializer):
     class Meta(DataObjectSerializer.Meta):
         model = Track
         fields = DataObjectSerializer.Meta.fields + [
@@ -23,7 +23,7 @@ class TrackRetrieveSerializer(DataObjectSerializer, ReadOnlyMixin):
         ]
 
 
-class TrackListSerializer(DataObjectSerializer, ReadOnlyMixin):
+class TrackListSerializer(DataObjectSerializer):
     class Meta(DataObjectSerializer.Meta):
         model = Track
         fields = DataObjectSerializer.Meta.fields + [
