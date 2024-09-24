@@ -13,6 +13,7 @@ from api.common import (
     extend_schema_view,
     status,
 )
+from api.music.filters import PlaylistFilterSet
 from api.music.serializers import (
     PlaylistCreateSerializer,
     PlaylistSerializer,
@@ -63,12 +64,7 @@ class PlaylistViewSet(
         SearchFilter,
         OrderingFilter,
     ]
-    filterset_fields = [
-        "owner__id",
-        "owner__user__username",
-        "created",
-        "modified",
-    ]
+    filterset_class = PlaylistFilterSet
     search_fields = [
         "name",
         "owner__user__username",

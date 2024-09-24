@@ -13,6 +13,7 @@ from api.common import (
     extend_schema_view,
     status,
 )
+from api.music.filters import TrackFilterSet
 from api.music.serializers import (
     TrackCreateSerializer,
     TrackListSerializer,
@@ -63,15 +64,7 @@ class TrackViewSet(
         SearchFilter,
         OrderingFilter,
     ]
-    filterset_fields = [
-        "owner__id",
-        "owner__user__username",
-        "genre",
-        "duration",
-        "release_date",
-        "created",
-        "modified",
-    ]
+    filterset_class = TrackFilterSet
     search_fields = [
         "title",
         "description",
