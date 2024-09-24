@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## v7.2.0 (2024-09-24)
+
+### Feature
+
+* feat(music): add CRUD API stub for albums ([`3be8952`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/3be8952c94a065741b488ecc214b3e558ee18bfa))
+
+* feat(music): add ordering fields to track and playlist views ([`8842fee`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/8842feebda994f993d45f4d86040f6fa6384989f))
+
+* feat(music): add filterset classes for music views ([`15c6700`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/15c67004baa08c3799d81a422bc75dbc40f59f56))
+
+* feat(api): add common filterset fields ([`dd2c76b`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/dd2c76b38815838a5cbbaa7d9c247ccd0b7457ad))
+
+* feat(api): add filter fields to api.common ([`cd1d021`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/cd1d02159750701bfcc24e44eeb9b4c55e480c9f))
+
+### Refactor
+
+* refactor(api): make all model serializers read only ([`aa7d91a`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/aa7d91a9e900ce78d744edee25a5db43c43b1f5b))
+
 ## v7.1.0 (2024-09-19)
 
 ### Feature
