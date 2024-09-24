@@ -69,6 +69,11 @@ class PlaylistViewSet(
         "name",
         "owner__user__username",
     ]
+    ordering_fields = [
+        "name",
+        "created",
+        "modified",
+    ]
 
     def get_serializer_class(self):
         if self.action == "retrieve":

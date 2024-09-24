@@ -74,6 +74,8 @@ class TrackViewSet(
         "title",
         "duration",
         "release_date",
+        "created",
+        "modified",
     ]
 
     def get_serializer_class(self):
