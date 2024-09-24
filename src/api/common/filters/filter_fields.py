@@ -3,6 +3,7 @@ from django_filters.filters import (
     AllValuesMultipleFilter,
     BooleanFilter,
     CharFilter,
+    ChoiceFilter,
     DateFilter,
     DateFromToRangeFilter,
     DateRangeFilter,
@@ -22,6 +23,7 @@ from django_filters.filters import (
 
 __all__ = [
     "CharFilter",
+    "ChoiceFilter",
     "BooleanFilter",
     "UUIDFilter",
     "DateFilter",
