@@ -48,13 +48,13 @@ class CommentBase(SocialModel):
     def __str__(self):
         return f"{self.owner.username} - {self.subject}"
 
-    class Meta(BaseModel.Meta):
+    class Meta(SocialModel.Meta):
         abstract = True
 
 
 class RepostBase(SocialModel):
 
-    class Meta(BaseModel.Meta):
+    class Meta(SocialModel.Meta):
         abstract = True
         constraints = [
             models.UniqueConstraint(
@@ -65,7 +65,7 @@ class RepostBase(SocialModel):
 
 class LikeBase(SocialModel):
 
-    class Meta(BaseModel.Meta):
+    class Meta(SocialModel.Meta):
         abstract = True
         constraints = [
             models.UniqueConstraint(

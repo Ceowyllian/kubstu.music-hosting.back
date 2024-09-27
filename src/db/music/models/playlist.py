@@ -22,6 +22,8 @@ class Playlist(
     tracks = models.ManyToManyField(
         to="music.Track",
         related_name=_("playlists"),
+        through="music.PlaylistTrack",
+        through_fields=("playlist", "track"),
         verbose_name=_("Tracks"),
     )
 

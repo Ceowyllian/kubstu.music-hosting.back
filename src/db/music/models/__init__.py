@@ -1,4 +1,5 @@
-from db.music.models.album import Album
-from db.music.models.constants import GENRE_CHOICES
-from db.music.models.playlist import Playlist
-from db.music.models.track import Track
+from .album import Album
+from .constants import GENRE_CHOICES
+from .m2m import AlbumTrack, PlaylistTrack
+from .playlist import Playlist
+from .track import Track

@@ -32,6 +32,8 @@ class Album(
     tracks = models.ManyToManyField(
         to="music.Track",
         related_name=_("albums"),
+        through="music.AlbumTrack",
+        through_fields=("album", "track"),
         verbose_name=_("Tracks"),
     )
 
