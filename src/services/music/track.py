@@ -46,12 +46,13 @@ class TrackUpdateFields(TypedDict):
     release_date: date
 
 
-def track_update(*, track_id, data: TrackUpdateFields):
-    model_update(
-        instance=Track.objects.select_for_update().get(id=track_id),
+def track_update(*, track: Track, data: TrackUpdateFields):
+    instance, _ = model_update(
+        instance=track,
         fields=["image", "genre", "title", "description", "release_date"],
         data=data,
     )
+    return instance
 
 
 def track_delete(instance: Track):

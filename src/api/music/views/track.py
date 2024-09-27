@@ -21,6 +21,7 @@ from api.music.serializers import (
     TrackUpdateSerializer,
 )
 from db.music.models import Track
+from services.music import track_create, track_delete, track_update
 
 __all__ = [
     "TrackViewSet",
@@ -92,8 +93,7 @@ class TrackViewSet(
         input_ = TrackCreateSerializer(data=request.data)
         input_.is_valid(raise_exception=True)
 
-        # TODO: call track_create service
-        track = None
+        track = track_create(user=request.user, **input_.validated_data)
 
         output = TrackRetrieveSerializer(instance=track)
         return Response(output.data, status.HTTP_201_CREATED)
@@ -102,12 +102,12 @@ class TrackViewSet(
         input_ = TrackUpdateSerializer(data=request.data)
         input_.is_valid(raise_exception=True)
 
-        # TODO: call track_update service
-        track = None
+        track = track_update(track=self.get_object(), data=input_.validated_data)
 
         output = TrackRetrieveSerializer(instance=track)
         return Response(output.data, status.HTTP_200_OK)
 
     def destroy(self, request, *args, **kwargs):
-        # TODO: call track_destroy service
+        track = self.get_object()
+        track_delete(track)
         return Response(status=status.HTTP_204_NO_CONTENT)
