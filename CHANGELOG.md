@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v7.3.0 (2024-09-27)
+
+### Feature
+
+* feat(music): add CRUD services for tracks ([`082bb71`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/082bb7137946340040e061e3d879f53ef699f8db))
+
+* feat(services): add common model_update service ([`9654543`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/965454373eaa586d9d226ec11995507b10c19503))
+
+* feat(api): add common parsers ([`9da5c38`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/9da5c3886137f885660d570bd483c3646247e0c6))
+
 ## v7.2.0 (2024-09-24)
 
 ### Feature
