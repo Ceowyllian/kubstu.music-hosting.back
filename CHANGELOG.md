@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v8.0.0 (2024-09-27)
+
+### Breaking
+
+* feat(music)!: add intermediate models storing info about tracks in playlists and albums
+
+BREAKING-CHANGE: drop all under &#34;music&#34; and before updating to this ([`95952e6`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/95952e6e45ada0ec26366f012b9435cc055d40e8))
+
+### Feature
+
+* feat(music): use track CRUD services in views ([`35aa755`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/35aa755bf11da39697dfcbdfbddcf15005fddb1b))
+
+### Refactor
+
+* refactor(music): use intermediate models in track_delete service ([`1c37042`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/1c37042befd37479d9bf6e5c80c3840186565f5d))
+
 ## v7.3.0 (2024-09-27)
 
 ### Feature
