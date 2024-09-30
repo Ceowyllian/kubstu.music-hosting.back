@@ -39,8 +39,8 @@ class Person(BaseModel):
     )
     saved_playlists = models.ManyToManyField(
         to="music.Playlist",
-        related_name="followers",
-        related_query_name="follower",
+        through="person.SavedPlaylist",
+        through_fields=("owner", "playlist"),
     )
     subscribers = models.ManyToManyField(
         to="self",
