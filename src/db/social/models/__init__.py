@@ -4,4 +4,5 @@ from db.social.models.comment import (
     PlaylistComment,
     TrackComment,
 )
-from db.social.models.like import LikeBase, PlaylistLike, TrackLike
+from db.social.models.like import AlbumLike, LikeBase, PlaylistLike, TrackLike
+from db.social.models.repost import AlbumRepost, PlaylistRepost, RepostBase, TrackRepost
