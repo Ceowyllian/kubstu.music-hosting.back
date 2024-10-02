@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v9.0.0 (2024-10-02)
+
+### Breaking
+
+* feat(db)!: make all models soft-deletable ([`4d0558f`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/4d0558f04f58efe1739a5e8fcf551c1928b07c1d))
+
+* feat(social)!: add repost models to db.social.__init__ ([`e8248ec`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/e8248ec61a53fe8c08b941185a27ec87828f4487))
+
+* feat(person)!: add intermediate model storing info about saved playlists
+
+BREAKING-CHANGE: drop all under &#34;person&#34; before updating to this ([`dd30a72`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/dd30a72cc768bf9f8ca13f106498e8caaa965458))
+
+### Feature
+
+* feat(social): add &#34;parent&#34; field to CommentBase model ([`9f81c17`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/9f81c17fa46fbe923035972470dd5eb381dbbf0e))
+
 ## v8.0.0 (2024-09-27)
 
 ### Breaking
