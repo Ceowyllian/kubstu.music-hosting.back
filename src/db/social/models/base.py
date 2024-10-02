@@ -44,6 +44,13 @@ class CommentBase(SocialModel):
         editable=True,
         verbose_name=_("Subject"),
     )
+    parent = models.ForeignKey(
+        to="self",
+        on_delete=models.RESTRICT,
+        related_name="children",
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
         return f"{self.owner.username} - {self.subject}"
