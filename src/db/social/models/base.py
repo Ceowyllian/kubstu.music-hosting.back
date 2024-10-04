@@ -1,25 +1,23 @@
 from django.db import models
+from django.utils.decorators import classonlymethod
+from django.utils.functional import classproperty
 from django.utils.translation import gettext_lazy as _
 
 from db.common import BaseModel
 from db.person.models import WithOwnerMixin
 
 __all__ = [
-    "make_target_field",
     "CommentBase",
-    "RepostBase",
-    "LikeBase",
+    "comment_target_field",
 ]
 
 
-def make_target_field(path_to_model: str):
-    """
-    :param path_to_model: should be a dotted path to django model "app_label.ModelClass"
-    """
-    model_name = path_to_model.split(".")[-1]
+def comment_target_field(model_label: str):
+    model_name = model_label.split(".")[-1]
     return models.ForeignKey(
-        to=path_to_model,
+        to=model_label,
         on_delete=models.RESTRICT,
+        related_name="comments",
         null=False,
         blank=False,
         editable=False,
@@ -27,17 +25,14 @@ def make_target_field(path_to_model: str):
     )
 
 
-class SocialModel(BaseModel, WithOwnerMixin):
-    target: type[models.Model] = None
+class CommentBase(BaseModel, WithOwnerMixin):
+    target: models.ForeignKey = NotImplemented
 
-    def __str__(self):
-        return f"{self.owner.username} - {self.target}"
+    @classproperty
+    @classonlymethod
+    def target_model_class(cls) -> type[BaseModel]:
+        return cls.target.related_model
 
-    class Meta:
-        abstract = True
-
-
-class CommentBase(SocialModel):
     subject = models.TextField(
         blank=False,
         null=False,
@@ -55,27 +50,5 @@ class CommentBase(SocialModel):
     def __str__(self):
         return f"{self.owner.username} - {self.subject}"
 
-    class Meta(SocialModel.Meta):
+    class Meta(BaseModel.Meta):
         abstract = True
-
-
-class RepostBase(SocialModel):
-
-    class Meta(SocialModel.Meta):
-        abstract = True
-        constraints = [
-            models.UniqueConstraint(
-                fields=("owner", "target"), name="unique_%(class)s"
-            ),
-        ]
-
-
-class LikeBase(SocialModel):
-
-    class Meta(SocialModel.Meta):
-        abstract = True
-        constraints = [
-            models.UniqueConstraint(
-                fields=("owner", "target"), name="unique_%(class)s"
-            ),
-        ]

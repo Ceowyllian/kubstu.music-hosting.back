@@ -1,33 +1,25 @@
+from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from db.social.models.base import LikeBase, make_target_field
+from db.common import BaseModel
+from db.person.models import WithOwnerMixin
 
 __all__ = [
-    "TrackLike",
-    "PlaylistLike",
-    "AlbumLike",
+    "Like",
 ]
 
 
-class TrackLike(LikeBase):
-    target = make_target_field("music.Track")
+class Like(BaseModel, WithOwnerMixin):
+    target_id = models.UUIDField(
+        null=False,
+        blank=False,
+        editable=False,
+        verbose_name=_("Target ID"),
+    )
 
-    class Meta(LikeBase.Meta):
-        verbose_name = _("Track like")
-        verbose_name_plural = _("Track likes")
-
-
-class PlaylistLike(LikeBase):
-    target = make_target_field("music.Playlist")
-
-    class Meta(LikeBase.Meta):
-        verbose_name = _("Playlist like")
-        verbose_name_plural = _("Playlist likes")
-
-
-class AlbumLike(LikeBase):
-    target = make_target_field("music.Album")
-
-    class Meta(LikeBase.Meta):
-        verbose_name = _("Album like")
-        verbose_name_plural = _("Album likes")
+    class Meta(BaseModel.Meta):
+        verbose_name = _("Like")
+        verbose_name_plural = _("Likes")
+        constraints = [
+            models.UniqueConstraint(fields=("owner", "target_id"), name="unique_like"),
+        ]

@@ -1,6 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 
-from db.social.models.base import CommentBase, make_target_field
+from db.social.models.base import CommentBase, comment_target_field
 
 __all__ = [
     "TrackComment",
@@ -10,7 +10,7 @@ __all__ = [
 
 
 class TrackComment(CommentBase):
-    target = make_target_field("music.Track")
+    target = comment_target_field("music.Track")
 
     class Meta(CommentBase.Meta):
         verbose_name = _("Track comment")
@@ -18,7 +18,7 @@ class TrackComment(CommentBase):
 
 
 class PlaylistComment(CommentBase):
-    target = make_target_field("music.Playlist")
+    target = comment_target_field("music.Playlist")
 
     class Meta(CommentBase.Meta):
         verbose_name = _("Playlist comment")
@@ -26,7 +26,7 @@ class PlaylistComment(CommentBase):
 
 
 class AlbumComment(CommentBase):
-    target = make_target_field("music.Album")
+    target = comment_target_field("music.Album")
 
     class Meta(CommentBase.Meta):
         verbose_name = _("Album comment")
