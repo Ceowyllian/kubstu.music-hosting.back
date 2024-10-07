@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 from db.common import BaseModel
 from db.person.models import WithOwnerMixin
+from db.social.models.constants import LIKE_TARGET_TYPE_CHOICES
 
 __all__ = [
     "Like",
@@ -15,6 +16,13 @@ class Like(BaseModel, WithOwnerMixin):
         blank=False,
         editable=False,
         verbose_name=_("Target ID"),
+    )
+    target_type = models.PositiveIntegerField(
+        null=False,
+        blank=False,
+        editable=False,
+        choices=LIKE_TARGET_TYPE_CHOICES,
+        verbose_name=_("Target model type"),
     )
 
     class Meta(BaseModel.Meta):
