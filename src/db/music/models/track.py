@@ -4,12 +4,15 @@ from django.utils.translation import gettext_lazy as _
 from db.common import BaseModel
 from db.music.models.constants import GENRE_CHOICES
 from db.person.models import WithOwnerMixin
+from db.social import with_likes
+from db.social.models import LIKE_TARGET_TYPE_CHOICES
 
 __all__ = [
     "Track",
 ]
 
 
+@with_likes(LIKE_TARGET_TYPE_CHOICES.Track)
 class Track(
     BaseModel,
     WithOwnerMixin,

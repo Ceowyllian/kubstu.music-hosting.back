@@ -4,7 +4,7 @@ from typing import Any, TypedDict
 from django.db import transaction
 
 from db.music.models import AlbumTrack, PlaylistTrack, Track
-from db.social.models import TrackLike
+from db.social.models import Like
 from services.common import model_update
 
 __all__ = [
@@ -56,10 +56,11 @@ def track_update(*, track: Track, data: TrackUpdateFields):
 
 
 def track_delete(instance: Track):
-    track_likes = TrackLike.objects.filter(target=instance)
+    track_likes = Like.objects.filter(target_id=instance.id)
     track_in_albums = AlbumTrack.objects.filter(track=instance)
     track_in_playlists = PlaylistTrack.objects.filter(track=instance)
     with transaction.atomic():
+        instance.comments.all().delete()
         track_likes.delete()
         track_in_albums.delete()
         track_in_playlists.delete()

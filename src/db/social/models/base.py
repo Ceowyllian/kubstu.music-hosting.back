@@ -5,6 +5,8 @@ from django.utils.translation import gettext_lazy as _
 
 from db.common import BaseModel
 from db.person.models import WithOwnerMixin
+from db.social import with_likes
+from db.social.models import LIKE_TARGET_TYPE_CHOICES
 
 __all__ = [
     "CommentBase",
@@ -25,6 +27,7 @@ def comment_target_field(model_label: str):
     )
 
 
+@with_likes(LIKE_TARGET_TYPE_CHOICES.Comment)
 class CommentBase(BaseModel, WithOwnerMixin):
     target: models.ForeignKey = NotImplemented
 
