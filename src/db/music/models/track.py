@@ -5,7 +5,7 @@ from db.common import BaseModel
 from db.music.models.constants import GENRE_CHOICES
 from db.person.models import WithOwnerMixin
 from db.social import with_likes
-from db.social.models import LIKE_TARGET_TYPE_CHOICES
+from db.social.models.constants import LIKE_TARGET_TYPE_CHOICES
 
 __all__ = [
     "Track",
