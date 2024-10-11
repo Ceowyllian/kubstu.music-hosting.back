@@ -1,7 +1,7 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from api.music.views import AlbumViewSet, PlaylistViewSet, TrackViewSet
+from api.music.views import AlbumViewSet, PlaylistViewSet, TrackLikeView, TrackViewSet
 
 tracks_router = DefaultRouter()
 tracks_router.register(r"tracks", TrackViewSet, "tracks")
@@ -16,4 +16,5 @@ urlpatterns = [
     path(r"", include(tracks_router.urls)),
     path(r"", include(playlist_router.urls)),
     path(r"", include(album_router.urls)),
+    path(r"tracks/<uuid:target_pk>/like/", TrackLikeView.as_view()),
 ]

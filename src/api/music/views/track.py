@@ -20,11 +20,13 @@ from api.music.serializers import (
     TrackRetrieveSerializer,
     TrackUpdateSerializer,
 )
+from api.social.views import LikeView
 from db.music.models import Track
 from services.music import track_create, track_delete, track_update
 
 __all__ = [
     "TrackViewSet",
+    "TrackLikeView",
 ]
 
 
@@ -111,3 +113,7 @@ class TrackViewSet(
         track = self.get_object()
         track_delete(track)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class TrackLikeView(LikeView):
+    target_type = Track.like_target_type
