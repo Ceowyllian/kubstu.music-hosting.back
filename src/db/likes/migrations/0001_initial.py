@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('person', '0005_person_is_removed_personrole_is_removed_and_more'),
+        ('social', '0016_delete_like'),
     ]
 
     operations = [

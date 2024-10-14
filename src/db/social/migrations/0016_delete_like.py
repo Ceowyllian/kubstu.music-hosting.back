@@ -10,6 +10,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RemoveConstraint(
+            model_name="Like",
+            name="unique_like",
+        ),
         migrations.DeleteModel(
             name='Like',
         ),
