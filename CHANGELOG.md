@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v11.0.0 (2024-10-14)
+
+### Breaking
+
+* fix(likes)!: specify the correct order of applying migrations
+
+BREAKING-CHANGE: drop all under &#34;social&#34; and &#34;likes&#34; before updating to this ([`16bbf06`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/16bbf0643b01de103397c989a892cf7f19842e96))
+
 ## v10.0.0 (2024-10-14)
 
 ### Breaking
