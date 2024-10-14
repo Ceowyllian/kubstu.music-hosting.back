@@ -6,7 +6,7 @@ from api.common import (
     extend_schema,
     status,
 )
-from api.social.serializers import LikeCreateOutputSerializer
+from api.likes.serializers import LikeCreateOutputSerializer
 from services.social import like_create, like_destroy
 
 __all__ = [
