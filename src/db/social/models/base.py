@@ -4,9 +4,9 @@ from django.utils.functional import classproperty
 from django.utils.translation import gettext_lazy as _
 
 from db.common import BaseModel
+from db.likes import with_likes
+from db.likes.models.constants import LIKE_TARGET_TYPE_CHOICES
 from db.person.models import WithOwnerMixin
-from db.social import with_likes
-from db.social.models.constants import LIKE_TARGET_TYPE_CHOICES
 
 __all__ = [
     "CommentBase",

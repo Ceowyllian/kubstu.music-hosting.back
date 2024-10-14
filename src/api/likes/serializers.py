@@ -1,6 +1,6 @@
 from api.common import DataObjectSerializer, fields
-from db.social.models import Like
-from db.social.models.constants import LIKE_TARGET_TYPE_CHOICES
+from db.likes.models import Like
+from db.likes.models.constants import LIKE_TARGET_TYPE_CHOICES
 
 __all__ = [
     "LikeCreateOutputSerializer",

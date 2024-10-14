@@ -2,8 +2,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from db.common import BaseModel
+from db.likes.models.constants import LIKE_TARGET_TYPE_CHOICES
 from db.person.models import WithOwnerMixin
-from db.social.models.constants import LIKE_TARGET_TYPE_CHOICES
 
 __all__ = [
     "Like",
