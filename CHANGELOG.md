@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## v10.0.0 (2024-10-14)
+
+### Breaking
+
+* feat(likes)!: install app &#34;db.likes&#34; ([`f6fd603`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/f6fd6034966eb7b1aa26a59880e030fbbec9ac39))
+
+* feat(social)!: add target type field to the Like model
+
+BREAKING-CHANGE: drop all under &#34;social&#34; before updating to this ([`aa9a490`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/aa9a4909ef98d9a3845eeaa27267f1ce7344aacc))
+
+* feat(social)!: get rid of complicated model hierarchy
+
+BREAKING-CHANGE: drop all under &#34;social&#34; before updating to this ([`c555336`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/c5553366a69ef343a5c57937940da568901025a5))
+
+### Feature
+
+* feat(social): add api to create and delete likes ([`ff8be9b`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/ff8be9b5bc263971557b5a1a36438aa4b698da35))
+
+* feat(social): add &#34;with_likes&#34; decorator ([`032134e`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/032134ecae8d864fbb86843af0e071ebe27eb2a7))
+
+* feat(social): add services to create and destroy likes ([`572d6c1`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/572d6c1380ea059b3ce622df6141d834137cba2e))
+
+* feat(social): add with_likes decorator ([`02976a8`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/02976a8005a882baede58fdf0de33b64f009b6f7))
+
+### Refactor
+
+* refactor(likes): move everything related to likes to a separate package ([`df1792f`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/df1792f50460e521dd929fa64cfda184087986ec))
+
+* refactor(likes): rename &#34;api.social&#34; package to &#34;api.likes&#34; ([`c02e15f`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/c02e15f241d7047a2369df0e06c907ad1839d54f))
+
 ## v9.0.0 (2024-10-02)
 
 ### Breaking
