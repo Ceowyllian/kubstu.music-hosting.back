@@ -14,8 +14,8 @@ def like_url(prefix, view_class: type[LikeView]):
 
 
 urlpatterns = [
-    like_url("tracks", TrackLikeView),
-    like_url("comments", CommentLikeView),
-    like_url("playlists", PlaylistLikeView),
-    like_url("albums", AlbumLikeView),
+    like_url("music/tracks", TrackLikeView),
+    like_url("social/comments", CommentLikeView),
+    like_url("music/playlists", PlaylistLikeView),
+    like_url("music/albums", AlbumLikeView),
 ]
