@@ -3,8 +3,8 @@ from typing import Any, TypedDict
 
 from django.db import transaction
 
+from db.likes.models import Like
 from db.music.models import AlbumTrack, PlaylistTrack, Track
-from db.social.models import Like
 from services.common import model_update
 
 __all__ = [

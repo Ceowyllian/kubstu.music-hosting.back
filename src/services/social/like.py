@@ -1,7 +1,7 @@
 from django.utils.translation import gettext_lazy as _
 from rest_framework.exceptions import ValidationError
 
-from db.social.models import Like
+from db.likes.models import Like
 
 __all__ = [
     "like_create",
