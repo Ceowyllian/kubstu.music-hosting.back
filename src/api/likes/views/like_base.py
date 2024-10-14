@@ -1,5 +1,5 @@
 from api.common import (
-    SCHEMA_TAG_SOCIAL,
+    SCHEMA_TAG_LIKES,
     APIView,
     IsAuthenticated,
     Response,
@@ -14,7 +14,7 @@ __all__ = [
 ]
 
 
-@extend_schema(tags=[SCHEMA_TAG_SOCIAL])
+@extend_schema(tags=[SCHEMA_TAG_LIKES])
 class LikeView(APIView):
     target_type = NotImplemented
     permission_classes = [IsAuthenticated]
