@@ -1,6 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 
-from db.social.models.base import CommentBase, comment_target_field
+from db.comments.models.base import CommentBase, comment_target_field
 
 __all__ = [
     "TrackComment",

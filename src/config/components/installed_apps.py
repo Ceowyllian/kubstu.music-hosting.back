@@ -6,6 +6,7 @@ LOCAL_APPS = [
     "db.person.apps.PersonConfig",
     "db.social.apps.SocialConfig",
     "db.likes.apps.LikesConfig",
+    "db.comments.apps.CommentsConfig",
 ]
 
 THIRD_PARTY_APPS = [
