@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v13.0.0 (2024-10-15)
+
+### Breaking
+
+* feat(music)!: inherit Album and Playlist models from TrackCollection model ([`a559beb`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/a559beb93c3699101d397f994566a7c73f66d4b5))
+
+### Chore
+
+* chore(make): update &#34;version&#34; goal ([`fa16386`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/fa163867d26eb44976837b1d8e17a50dce78d9e1))
+
+### Feature
+
+* feat(music): add a base track collection model class ([`2048c2e`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/2048c2ee3266ed30ef45dc8240b45c22348d42ce))
+
+* feat(music): add a model for storing the order of tracks in playlists and albums ([`8fd800b`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/8fd800b3f47775000f4dd20a7ae607a6fdd98fef))
+
 ## v12.1.0 (2024-10-15)
 
 ### Feature
