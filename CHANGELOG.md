@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v12.1.0 (2024-10-15)
+
+### Feature
+
+* feat(db): get rid of soft deletion ([`2afdbf3`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/2afdbf31801eaf3cd66f7907aff3e6920e948f61))
+
+* feat(music): add a field to store the album image ([`89e3d15`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/89e3d1537f2c1cb214f0f304a2eccb522ac26e35))
+
 ## v12.0.0 (2024-10-15)
 
 ### Breaking
