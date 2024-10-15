@@ -16,6 +16,12 @@ class Album(
     BaseModel,
     WithOwnerMixin,
 ):
+    image = models.ImageField(
+        null=True,
+        blank=True,
+        upload_to="albums_images",
+        verbose_name=_("Image"),
+    )
     title = models.TextField(
         blank=False,
         null=False,
