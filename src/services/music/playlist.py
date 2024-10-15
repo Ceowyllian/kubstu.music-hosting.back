@@ -7,7 +7,6 @@ __all__ = [
     "playlist_create",
     "playlist_update",
     "playlist_destroy",
-    "playlist_restore",
     "playlist_add_track",
     "playlist_remove_track",
 ]
@@ -38,18 +37,6 @@ def playlist_destroy(playlist: Playlist):
     playlist.tracks.all().delete()
 
 
-@transaction.atomic()
-def playlist_restore(playlist_id):
-    playlist = Playlist.all_objects.get(id=playlist_id)
-    playlist.is_removed = False
-    playlist.save(update_fields=["is_removed"])
-    tracks = PlaylistTrack.all_objects.filter(playlist=playlist)
-    for track in tracks:
-        track.is_removed = False
-    PlaylistTrack.all_objects.bulk_update(tracks, ("is_removed",))
-    return playlist
-
-
 def playlist_add_track(*, playlist_id, track_id):
     track_in_playlist = PlaylistTrack(playlist_id=playlist_id, track_id=track_id)
     track_in_playlist.full_clean()
@@ -58,6 +45,4 @@ def playlist_add_track(*, playlist_id, track_id):
 
 
 def playlist_remove_track(*, playlist_id, track_id):
-    PlaylistTrack.available_objects.get(
-        playlist_id=playlist_id, track_id=track_id
-    ).delete()
+    PlaylistTrack.objects.get(playlist_id=playlist_id, track_id=track_id).delete()

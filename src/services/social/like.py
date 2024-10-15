@@ -21,7 +21,6 @@ def like_create(*, liked_by, target_id, target_type):
 
 def like_destroy(*, liked_by, target_id):
     try:
-        like = Like.available_objects.get(target_id=target_id, owner=liked_by)
+        Like.objects.get(target_id=target_id, owner=liked_by).delete()
     except Like.DoesNotExist as e:
         raise ValidationError(_("You have not liked this post yet.")) from e
-    like.delete(soft=False)

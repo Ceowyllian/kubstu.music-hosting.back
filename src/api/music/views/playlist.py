@@ -9,7 +9,6 @@ from api.common import (
     OrderingFilter,
     Response,
     SearchFilter,
-    action,
     extend_schema,
     extend_schema_view,
     status,
@@ -22,12 +21,7 @@ from api.music.serializers import (
     PlaylistWithTracksSerializer,
 )
 from db.music.models import Playlist
-from services.music import (
-    playlist_create,
-    playlist_destroy,
-    playlist_restore,
-    playlist_update,
-)
+from services.music import playlist_create, playlist_destroy, playlist_update
 
 __all__ = [
     "PlaylistViewSet",
@@ -90,7 +84,7 @@ class PlaylistViewSet(
 
     def get_queryset(self):
         # TODO use selector instead
-        return Playlist.available_objects.all()
+        return Playlist.objects.all()
 
     def create(self, request, *args, **kwargs):
         input_ = PlaylistCreateSerializer(data=request.data)
@@ -113,10 +107,3 @@ class PlaylistViewSet(
     def destroy(self, request, *args, **kwargs):
         playlist_destroy(self.get_object())
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-    @extend_schema(responses={200: PlaylistSerializer})
-    @action(methods=["POST"], detail=True, permission_classes=[IsOwner])
-    def restore(self, request, *args, **kwargs):
-        playlist = playlist_restore(self.kwargs["pk"])
-        output = PlaylistSerializer(instance=playlist)
-        return Response(output.data, status.HTTP_200_OK)
