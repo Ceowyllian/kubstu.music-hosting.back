@@ -1,6 +1,7 @@
 from . import fields
 from .action import *  # noqa
 from .filters import *  # noqa
+from .get_object_or_404 import *  # noqa
 from .open_api import *  # noqa
 from .parsers import *  # noqa
 from .permissions import *  # noqa
