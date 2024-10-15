@@ -9,6 +9,7 @@ __all__ = [
     "PlaylistWithTracksSerializer",
     "PlaylistCreateSerializer",
     "PlaylistUpdateSerializer",
+    "PlaylistAddTrackSerializer",
 ]
 
 
@@ -38,16 +39,15 @@ class PlaylistCreateSerializer(EmptySerializer):
     name = fields.CharField(
         help_text=_("Playlist name"),
     )
-    track_ids = fields.ListField(
-        child=fields.UUIDField(),
-        allow_null=False,
-        allow_empty=False,
-        required=False,
-        help_text=_("Track IDs"),
-    )
 
 
 class PlaylistUpdateSerializer(EmptySerializer):
     name = fields.CharField(
         help_text=_("Playlist name"),
+    )
+
+
+class PlaylistAddTrackSerializer(EmptySerializer):
+    track_id = fields.UUIDField(
+        help_text=_("Track ID"),
     )

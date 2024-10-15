@@ -9,6 +9,7 @@ from api.common import (
     OrderingFilter,
     Response,
     SearchFilter,
+    action,
     extend_schema,
     extend_schema_view,
     status,
@@ -21,6 +22,12 @@ from api.music.serializers import (
     PlaylistWithTracksSerializer,
 )
 from db.music.models import Playlist
+from services.music import (
+    playlist_create,
+    playlist_destroy,
+    playlist_restore,
+    playlist_update,
+)
 
 __all__ = [
     "PlaylistViewSet",
@@ -83,14 +90,13 @@ class PlaylistViewSet(
 
     def get_queryset(self):
         # TODO use selector instead
-        return Playlist.objects.all()
+        return Playlist.available_objects.all()
 
     def create(self, request, *args, **kwargs):
         input_ = PlaylistCreateSerializer(data=request.data)
         input_.is_valid(raise_exception=True)
 
-        # TODO call playlist_create service
-        playlist = None
+        playlist = playlist_create(user=request.user, **input_.validated_data)
 
         output = PlaylistSerializer(instance=playlist)
         return Response(output.data, status.HTTP_201_CREATED)
@@ -99,12 +105,18 @@ class PlaylistViewSet(
         input_ = PlaylistUpdateSerializer(data=request.data)
         input_.is_valid(raise_exception=True)
 
-        # TODO call playlist_update service
-        playlist = None
+        playlist = playlist_update(playlist=self.get_object(), **input_.validated_data)
 
         output = PlaylistSerializer(instance=playlist)
         return Response(output.data, status.HTTP_200_OK)
 
     def destroy(self, request, *args, **kwargs):
-        # TODO: call track_destroy service
+        playlist_destroy(self.get_object())
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    @extend_schema(responses={200: PlaylistSerializer})
+    @action(methods=["POST"], detail=True, permission_classes=[IsOwner])
+    def restore(self, request, *args, **kwargs):
+        playlist = playlist_restore(self.kwargs["pk"])
+        output = PlaylistSerializer(instance=playlist)
+        return Response(output.data, status.HTTP_200_OK)
