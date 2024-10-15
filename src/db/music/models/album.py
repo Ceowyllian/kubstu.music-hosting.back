@@ -1,9 +1,9 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from db.common import BaseModel
 from db.likes import with_likes
 from db.likes.models.constants import LIKE_TARGET_TYPE_CHOICES
+from db.music.models.track_collection import TrackCollection
 from db.person.models import WithOwnerMixin
 
 __all__ = [
@@ -13,7 +13,7 @@ __all__ = [
 
 @with_likes(LIKE_TARGET_TYPE_CHOICES.Album)
 class Album(
-    BaseModel,
+    TrackCollection,
     WithOwnerMixin,
 ):
     image = models.ImageField(
@@ -38,17 +38,11 @@ class Album(
         editable=True,
         verbose_name=_("Release date"),
     )
-    tracks = models.ManyToManyField(
-        to="music.Track",
-        related_name=_("albums"),
-        through="music.AlbumTrack",
-        through_fields=("album", "track"),
-        verbose_name=_("Tracks"),
-    )
+    tracks = TrackCollection.Items("music.AlbumTrack")
 
     def __str__(self):
         return self.title
 
-    class Meta(BaseModel.Meta):
+    class Meta(TrackCollection.Meta):
         verbose_name = _("Album")
         verbose_name_plural = _("Playlists")

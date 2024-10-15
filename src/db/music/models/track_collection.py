@@ -28,7 +28,9 @@ class TrackCollectionItem(BaseModel):
     @classonlymethod
     def Parent(cls, to: str):
         return models.ForeignKey(
-            to, on_delete=models.RESTRICT, verbose_name=_(to.split(".")[-1])
+            to,
+            on_delete=models.RESTRICT,
+            verbose_name=_(to.split(".")[-1]),
         )
 
     class Meta(BaseModel.Meta):
@@ -47,7 +49,6 @@ class TrackCollection(BaseModel):
     def Items(cls, through: str):
         return models.ManyToManyField(
             "music.Track",
-            related_name=_(f"{cls.__name__.lower()}s"),
             through=through,
             through_fields=("parent", "track"),
             verbose_name=_("Tracks"),
