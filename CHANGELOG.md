@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## v12.0.0 (2024-10-15)
+
+### Breaking
+
+* feat(comments)!: move everything related to comments to a separate package
+
+BREAKING-CHANGE: drop all under &#34;social&#34; before updating to this ([`4ea1835`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/4ea18355c80d590b64c1792192be18c6663132c2))
+
+### Documentation
+
+* docs(likes): add a schema tag for the likes api ([`44cb106`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/44cb106a37b25f8a3dcdf81d148343a45ffa9d73))
+
+### Feature
+
+* feat(music): add API to add and remove tracks from a playlist ([`580d63c`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/580d63c04bb4f473203ae143b76496a5f06761ff))
+
+* feat(music): add functions to add and remove tracks from a playlist ([`75535b8`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/75535b806ae4959d5c1002b9e8c87274dac1bb79))
+
+* feat(social): delete &#34;Repost&#34; model ([`569cdac`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/569cdacbedba6efa68992b280f2ee43e56c99665))
+
+### Fix
+
+* fix(likes): specify the correct prefixes for the routes ([`774379c`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/774379c81debb9af5d99f6baa5aadaa2a39fe156))
+
 ## v11.0.0 (2024-10-14)
 
 ### Breaking
