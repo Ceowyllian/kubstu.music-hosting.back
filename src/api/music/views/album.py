@@ -17,10 +17,12 @@ from api.music.serializers import (
     AlbumUpdateSerializer,
     AlbumWithTracksSerializer,
 )
+from api.music.views.track_collection_base import TrackCollectionViewSet
 from db.music.models import Album
 
 __all__ = [
     "AlbumViewSet",
+    "AlbumTrackViewSet",
 ]
 
 
@@ -80,3 +82,7 @@ class AlbumViewSet(ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         # TODO call album_update service
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class AlbumTrackViewSet(TrackCollectionViewSet):
+    collection_model_class = Album

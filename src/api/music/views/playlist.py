@@ -20,11 +20,13 @@ from api.music.serializers import (
     PlaylistUpdateSerializer,
     PlaylistWithTracksSerializer,
 )
+from api.music.views.track_collection_base import TrackCollectionViewSet
 from db.music.models import Playlist
 from services.music import playlist_create, playlist_destroy, playlist_update
 
 __all__ = [
     "PlaylistViewSet",
+    "PlaylistTrackViewSet",
 ]
 
 
@@ -107,3 +109,7 @@ class PlaylistViewSet(
     def destroy(self, request, *args, **kwargs):
         playlist_destroy(self.get_object())
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class PlaylistTrackViewSet(TrackCollectionViewSet):
+    collection_model_class = Playlist
