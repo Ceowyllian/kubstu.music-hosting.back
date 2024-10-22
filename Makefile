@@ -26,4 +26,4 @@ migrate:
 version:
 	$(v) && git checkout master && git rebase --onto dev \
 	&& semantic-release version --no-vcs-release --no-push \
-	&& git checkout dev && git rebase --onto master && git push --all
+	&& git checkout dev && git push --all
