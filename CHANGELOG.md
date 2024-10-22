@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v13.1.0 (2024-10-22)
+
+### Feature
+
+* feat(music): add generic API to perform operations on track collections ([`40fab20`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/40fab2097c186073fcac68017d6bed0b88aaa437))
+
+* feat(api): add &#34;get_object_or_404&#34; function to &#34;api.common&#34; ([`e4f18cc`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/e4f18cce1f6d76f9acac956a3baabc922ceba3fa))
+
+* feat(music): add service functions to work with track collections ([`01aa733`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/01aa733dbb0354b10e9332ba02ca12fe972a5d45))
+
 ## v13.0.0 (2024-10-15)
 
 ### Breaking
