@@ -3,6 +3,7 @@ from django.utils.decorators import classonlymethod
 from django.utils.functional import classproperty
 from django.utils.translation import gettext_lazy as _
 
+from db.comments.models.constants import COMMENT_STATUS_CHOICES
 from db.common import BaseModel
 from db.likes import with_likes
 from db.likes.models.constants import LIKE_TARGET_TYPE_CHOICES
@@ -48,6 +49,15 @@ class CommentBase(BaseModel, WithOwnerMixin):
         related_name="children",
         null=True,
         blank=True,
+        verbose_name=_("Parent comment"),
+    )
+    status = models.PositiveIntegerField(
+        blank=False,
+        null=False,
+        editable=True,
+        default=COMMENT_STATUS_CHOICES.Visible,
+        choices=COMMENT_STATUS_CHOICES,
+        verbose_name=_("Comment status"),
     )
 
     def __str__(self):
