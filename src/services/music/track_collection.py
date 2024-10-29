@@ -44,7 +44,7 @@ class TrackCollectionService:
         return item
 
     @transaction.atomic()
-    def remove_track(self, track_id: Track):
+    def remove_track(self, track_id):
         item = self.get_item(track_id)
         removed_at = item.number
         self.items_qs.filter(number__gt=removed_at).update(number=F("number") - 1)
