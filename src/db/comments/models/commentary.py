@@ -1,6 +1,4 @@
 from django.db import models
-from django.utils.decorators import classonlymethod
-from django.utils.functional import classproperty
 from django.utils.translation import gettext_lazy as _
 
 from db.comments.models.constants import COMMENT_STATUS_CHOICES
@@ -10,32 +8,18 @@ from db.likes.models.constants import LIKE_TARGET_TYPE_CHOICES
 from db.person.models import WithOwnerMixin
 
 __all__ = [
-    "CommentBase",
-    "comment_target_field",
+    "Comment",
 ]
 
 
-def comment_target_field(model_label: str):
-    model_name = model_label.split(".")[-1]
-    return models.ForeignKey(
-        to=model_label,
-        on_delete=models.RESTRICT,
-        related_name="comments",
-        null=False,
-        blank=False,
-        editable=False,
-        verbose_name=_(model_name),
-    )
-
-
 @with_likes(LIKE_TARGET_TYPE_CHOICES.Comment)
-class CommentBase(BaseModel, WithOwnerMixin):
-    target: models.ForeignKey = NotImplemented
-
-    @classproperty
-    @classonlymethod
-    def target_model_class(cls) -> type[BaseModel]:
-        return cls.target.related_model
+class Comment(BaseModel, WithOwnerMixin):
+    target_id = models.UUIDField(
+        blank=False,
+        null=False,
+        editable=False,
+        verbose_name=_("Target ID"),
+    )
 
     subject = models.TextField(
         blank=False,
@@ -64,4 +48,5 @@ class CommentBase(BaseModel, WithOwnerMixin):
         return f"{self.owner.username} - {self.subject}"
 
     class Meta(BaseModel.Meta):
-        abstract = True
+        verbose_name = _("Commentary")
+        verbose_name_plural = _("Commentaries")
