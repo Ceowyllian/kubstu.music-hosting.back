@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from db.comments.models.constants import COMMENT_STATUS_CHOICES
 from db.common import BaseModel, WithSocialTargetMixin
 from db.likes import with_likes
+from db.likes.models import WithLikesMixin
 from db.likes.models.constants import LIKE_TARGET_TYPE_CHOICES
 from db.person.models import WithOwnerMixin
 
@@ -17,6 +18,7 @@ class Comment(
     BaseModel,
     WithOwnerMixin,
     WithSocialTargetMixin,
+    WithLikesMixin,
 ):
     subject = models.TextField(
         blank=False,

@@ -1,3 +1,4 @@
+from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import gettext_lazy as _
 from rest_framework.exceptions import ValidationError
 
@@ -9,12 +10,9 @@ __all__ = [
 ]
 
 
-def like_create(*, liked_by, target_id, target_type):
-    like = Like(
-        target_id=target_id,
-        target_type=target_type,
-        owner=liked_by,
-    )
+def like_create(*, liked_by, target):
+    ct = ContentType.objects.get_for_model(type(target))
+    like = Like(target_id=target.id, owner=liked_by, content_type=ct)
     like.full_clean()
     like.save()
 
