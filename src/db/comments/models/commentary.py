@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from db.comments.models.constants import COMMENT_STATUS_CHOICES
-from db.common import BaseModel
+from db.common import BaseModel, WithSocialTargetMixin
 from db.likes import with_likes
 from db.likes.models.constants import LIKE_TARGET_TYPE_CHOICES
 from db.person.models import WithOwnerMixin
@@ -13,14 +13,11 @@ __all__ = [
 
 
 @with_likes(LIKE_TARGET_TYPE_CHOICES.Comment)
-class Comment(BaseModel, WithOwnerMixin):
-    target_id = models.UUIDField(
-        blank=False,
-        null=False,
-        editable=False,
-        verbose_name=_("Target ID"),
-    )
-
+class Comment(
+    BaseModel,
+    WithOwnerMixin,
+    WithSocialTargetMixin,
+):
     subject = models.TextField(
         blank=False,
         null=False,
