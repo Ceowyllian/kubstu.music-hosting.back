@@ -1,5 +1,37 @@
 # CHANGELOG
 
+## v14.0.0 (2024-11-05)
+
+### Breaking
+
+* feat(social)!: make migrations for likes and comments ([`b299bec`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/b299bec9d12c3df47967b9ca9390c8ff548d516e))
+
+* feat(music)!: store all comments in one table ([`7cd13ed`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/7cd13edd0ca0bff50b63ccffa1d2d9dcf52408e7))
+
+* feat(music)!: add a field to store the comment status ([`6357bea`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/6357bea8664e42e2a1bab695b5304700cba3a90d))
+
+### Chore
+
+* chore(make): remove &#34;git rebase&#34; from &#34;version&#34; goal ([`60fd3cb`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/60fd3cb16cceaf9ce6d855680a6a57ea340d25ea))
+
+### Feature
+
+* feat(comments): add API to create and watch comments for the specified target ([`27e3e28`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/27e3e288a174bbfcc4f425f1b114c8d1ce58dae8))
+
+* feat(social): add WithCommentsMixin and WithLikesMixin classes ([`a71afe4`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/a71afe40b18311ff503e66f785de17bcb0726c60))
+
+* feat(common): add WithSocialTargetMixin abstract model ([`715ff25`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/715ff25a8fb5384d4ff372dbd58fdad085f1fc10))
+
+### Fix
+
+* fix(likes): provide basename while creating router for like api urls ([`221d921`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/221d921cad9db7364d24eeb17c96daa2cee0c751))
+
+### Refactor
+
+* refactor(likes): delete obsolete &#34;with_likes&#34; decorator ([`8829e6d`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/8829e6db7b694c3d2327fb4974a754a102518edc))
+
+* refactor(music): remove invalid type annotation ([`90ee26c`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/90ee26c8975c84089f470ebbb712f22654a6538f))
+
 ## v13.1.0 (2024-10-22)
 
 ### Feature
