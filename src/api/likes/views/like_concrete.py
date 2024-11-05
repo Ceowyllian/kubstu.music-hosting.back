@@ -1,7 +1,6 @@
 from api.likes.views.like_base import LikeView
+from db.comments.models import Comment
 from db.music.models import Album, Playlist, Track
-
-# from db.social.models import CommentBase
 
 __all__ = [
     "TrackLikeView",
@@ -12,16 +11,16 @@ __all__ = [
 
 
 class TrackLikeView(LikeView):
-    target_type = Track.like_target_type
+    queryset = Track.objects.all()
 
 
 class AlbumLikeView(LikeView):
-    target_type = Album.like_target_type
+    queryset = Album.objects.all()
 
 
 class PlaylistLikeView(LikeView):
-    target_type = Playlist.like_target_type
+    queryset = Playlist.objects.all()
 
 
 class CommentLikeView(LikeView):
-    pass
+    queryset = Comment.objects.all()
