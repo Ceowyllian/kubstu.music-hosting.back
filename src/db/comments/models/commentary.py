@@ -3,9 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 from db.comments.models.constants import COMMENT_STATUS_CHOICES
 from db.common import BaseModel, WithSocialTargetMixin
-from db.likes import with_likes
 from db.likes.models import WithLikesMixin
-from db.likes.models.constants import LIKE_TARGET_TYPE_CHOICES
 from db.person.models import WithOwnerMixin
 
 __all__ = [
@@ -13,7 +11,6 @@ __all__ = [
 ]
 
 
-@with_likes(LIKE_TARGET_TYPE_CHOICES.Comment)
 class Comment(
     BaseModel,
     WithOwnerMixin,

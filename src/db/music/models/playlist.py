@@ -2,9 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from db.comments.models import WithCommentsMixin
-from db.likes import with_likes
 from db.likes.models import WithLikesMixin
-from db.likes.models.constants import LIKE_TARGET_TYPE_CHOICES
 from db.music.models.track_collection import TrackCollection
 from db.person.models import WithOwnerMixin
 
@@ -13,7 +11,6 @@ __all__ = [
 ]
 
 
-@with_likes(LIKE_TARGET_TYPE_CHOICES.Playlist)
 class Playlist(
     TrackCollection,
     WithOwnerMixin,
