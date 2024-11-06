@@ -4,6 +4,7 @@ __all__ = [
     "NestedCommentListSerializer",
     "CommentCreateSerializer",
     "CommentRetrieveSerializer",
+    "CommentUpdateSerializer",
 ]
 
 from db.comments.models import Comment
@@ -34,3 +35,7 @@ class CommentRetrieveSerializer(DataObjectSerializer):
             "parent_id",
             "status",
         ]
+
+
+class CommentUpdateSerializer(EmptySerializer):
+    subject = fields.CharField()
