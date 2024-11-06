@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## v14.1.0 (2024-11-06)
+
+### Feature
+
+* feat(comments): add API to update and destroy comments ([`53062ad`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/53062ad9e0cb0f18ca4831db3696ab2bfd215140))
+
+* feat(api): remove custom UpdateModelMixin class ([`64c41dc`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/64c41dc76f458b93c4404764157525cb65863d1f))
+
+* feat(api): add a schema tag for comment views ([`39221a8`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/39221a8aedc1ea6d67debe4ebaaeaa92cdc852c3))
+
+* feat(social): add base social view class ([`4d08e80`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/4d08e80be4bbb2ed99aa2c922c9f27902da38447))
+
+* feat(api): add generic functions to create urls for social views ([`b2029c5`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/b2029c5aa5109e8e9ca152cdbebdc85afae55f7d))
+
 ## v14.0.0 (2024-11-05)
 
 ### Breaking
