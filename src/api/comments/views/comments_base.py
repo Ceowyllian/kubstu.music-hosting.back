@@ -5,13 +5,12 @@ from api.comments.serializers import (
 )
 from api.common import (
     CreateModelMixin,
-    GenericViewSet,
     IsAuthenticatedOrReadOnly,
     ListModelMixin,
     Response,
-    get_object_or_404,
     status,
 )
+from api.social import SocialTargetNestedView
 from services.comments import CommentModelService
 
 __all__ = [
@@ -20,22 +19,17 @@ __all__ = [
 
 
 class CommentsNestedView(
-    GenericViewSet,
+    SocialTargetNestedView,
     ListModelMixin,
     CreateModelMixin,
 ):
-    target_model_class = NotImplemented
     permission_classes = [
         IsAuthenticatedOrReadOnly,
     ]
 
     @property
-    def target(self):
-        return get_object_or_404(self.target_model_class, pk=self.kwargs["target_pk"])
-
-    @property
     def service(self):
-        return CommentModelService(self.target)
+        return CommentModelService(self.get_target())
 
     def get_queryset(self):
         return self.service.comments_qs

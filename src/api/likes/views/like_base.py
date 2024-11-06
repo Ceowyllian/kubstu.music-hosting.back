@@ -2,13 +2,13 @@ from api.common import (
     SCHEMA_TAG_LIKES,
     CreateModelMixin,
     DestroyModelMixin,
-    GenericViewSet,
     IsAuthenticated,
     Response,
     extend_schema,
     status,
 )
 from api.likes.serializers import LikeCreateOutputSerializer
+from api.social import SocialTargetNestedView
 from services.social import like_create, like_destroy
 
 __all__ = [
@@ -18,7 +18,7 @@ __all__ = [
 
 @extend_schema(tags=[SCHEMA_TAG_LIKES])
 class LikeView(
-    GenericViewSet,
+    SocialTargetNestedView,
     CreateModelMixin,
     DestroyModelMixin,
 ):
@@ -28,7 +28,7 @@ class LikeView(
     def create(self, request, *args, **kwargs):
         like = like_create(
             liked_by=request.user.person,
-            target=self.get_object(),
+            target=self.get_target(),
         )
         output = LikeCreateOutputSerializer(like)
         return Response(output.data, status.HTTP_201_CREATED)

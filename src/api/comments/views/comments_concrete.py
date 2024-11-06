@@ -1,4 +1,4 @@
-from api.comments.views.comment_nested_view_base import CommentsNestedView
+from api.comments.views.comments_base import CommentsNestedView
 from db.music.models import Album, Playlist, Track
 
 __all__ = [
@@ -9,12 +9,15 @@ __all__ = [
 
 
 class TrackCommentsView(CommentsNestedView):
-    target_model_class = Track
+    def get_target_model_class(self):
+        return Track
 
 
 class AlbumCommentsView(CommentsNestedView):
-    target_model_class = Album
+    def get_target_model_class(self):
+        return Album
 
 
 class PlaylistCommentsView(CommentsNestedView):
-    target_model_class = Playlist
+    def get_target_model_class(self):
+        return Playlist

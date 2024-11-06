@@ -11,16 +11,20 @@ __all__ = [
 
 
 class TrackLikeView(LikeView):
-    queryset = Track.objects.all()
+    def get_target_model_class(self):
+        return Track
 
 
 class AlbumLikeView(LikeView):
-    queryset = Album.objects.all()
+    def get_target_model_class(self):
+        return Album
 
 
 class PlaylistLikeView(LikeView):
-    queryset = Playlist.objects.all()
+    def get_target_model_class(self):
+        return Playlist
 
 
 class CommentLikeView(LikeView):
-    queryset = Comment.objects.all()
+    def get_target_model_class(self):
+        return Comment
