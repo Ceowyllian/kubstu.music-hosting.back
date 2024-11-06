@@ -3,12 +3,15 @@ from rest_framework.mixins import (
     DestroyModelMixin,
     ListModelMixin,
     RetrieveModelMixin,
+    UpdateModelMixin,
 )
-from rest_framework.mixins import UpdateModelMixin as DrfUpdateModelMixin
 from rest_framework.views import APIView, View
-from rest_framework.viewsets import GenericViewSet
-from rest_framework.viewsets import ModelViewSet as DrfModelViewSet
-from rest_framework.viewsets import ReadOnlyModelViewSet, ViewSetMixin
+from rest_framework.viewsets import (
+    GenericViewSet,
+    ModelViewSet,
+    ReadOnlyModelViewSet,
+    ViewSetMixin,
+)
 
 __all__ = [
     "ListModelMixin",
@@ -23,17 +26,3 @@ __all__ = [
     "View",
     "APIView",
 ]
-
-
-class UpdateModelMixin(DrfUpdateModelMixin):
-    http_method_names = ["get", "post", "patch", "delete"]
-
-    def patch(self, request, *args, **kwargs):
-        return self.partial_update(request, *args, **kwargs)
-
-
-class ModelViewSet(
-    DrfModelViewSet,
-    UpdateModelMixin,
-):
-    pass
