@@ -1,13 +1,18 @@
+from django.utils.translation import gettext_lazy as _
+
 from api.comments.serializers import (
     CommentCreateSerializer,
     CommentRetrieveSerializer,
     NestedCommentListSerializer,
 )
 from api.common import (
+    SCHEMA_TAG_COMMENTS,
     CreateModelMixin,
     IsAuthenticatedOrReadOnly,
     ListModelMixin,
     Response,
+    extend_schema,
+    extend_schema_view,
     status,
 )
 from api.social import SocialTargetNestedView
@@ -18,6 +23,17 @@ __all__ = [
 ]
 
 
+@extend_schema_view(
+    list=extend_schema(
+        summary=_("Сomments associated with this object"),
+        responses={200: NestedCommentListSerializer(many=True)},
+    ),
+    create=extend_schema(
+        summary=_("Add a comment to a given object"),
+        responses={201: CommentRetrieveSerializer},
+    ),
+)
+@extend_schema(tags=[SCHEMA_TAG_COMMENTS])
 class CommentsNestedView(
     SocialTargetNestedView,
     ListModelMixin,
