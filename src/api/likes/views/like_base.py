@@ -1,3 +1,5 @@
+from django.utils.translation import gettext_lazy as _
+
 from api.common import (
     SCHEMA_TAG_LIKES,
     CreateModelMixin,
@@ -5,6 +7,7 @@ from api.common import (
     IsAuthenticated,
     Response,
     extend_schema,
+    extend_schema_view,
     status,
 )
 from api.likes.serializers import LikeCreateOutputSerializer
@@ -16,6 +19,16 @@ __all__ = [
 ]
 
 
+@extend_schema_view(
+    create=extend_schema(
+        summary=_("Like the specified object"),
+        responses={201: LikeCreateOutputSerializer},
+    ),
+    destroy=extend_schema(
+        summary=_("Remove like from the specified object"),
+        responses={204: None},
+    ),
+)
 @extend_schema(tags=[SCHEMA_TAG_LIKES])
 class LikeView(
     SocialTargetNestedView,
@@ -24,7 +37,6 @@ class LikeView(
 ):
     permission_classes = [IsAuthenticated]
 
-    @extend_schema(responses={201: LikeCreateOutputSerializer})
     def create(self, request, *args, **kwargs):
         like = like_create(
             liked_by=request.user.person,
@@ -33,7 +45,6 @@ class LikeView(
         output = LikeCreateOutputSerializer(like)
         return Response(output.data, status.HTTP_201_CREATED)
 
-    @extend_schema(responses={204: None})
     def destroy(self, request, *args, **kwargs):
         like_destroy(liked_by=request.user.person, target_id=self.target_id)
         return Response(status=status.HTTP_204_NO_CONTENT)
