@@ -12,7 +12,7 @@ from api.common import (
 )
 from api.likes.serializers import LikeCreateOutputSerializer
 from api.social import SocialTargetNestedView
-from services.social import like_create, like_destroy
+from services.likes import like_create, like_destroy
 
 __all__ = [
     "LikeView",
