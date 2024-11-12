@@ -2,13 +2,18 @@ from django.utils.translation import gettext_lazy as _
 
 from api.common import (
     SCHEMA_TAG_MUSIC,
+    AllowAny,
+    CreateModelMixin,
+    DestroyModelMixin,
     DjangoFilterBackend,
+    GenericViewSet,
     IsAuthenticatedOrReadOnly,
     IsOwner,
-    ModelViewSet,
     OrderingFilter,
     Response,
+    RetrieveModelMixin,
     SearchFilter,
+    UpdateModelMixin,
     extend_schema,
     extend_schema_view,
     status,
@@ -24,6 +29,7 @@ from db.music.models import Track
 from services.music import track_create, track_delete, track_update
 
 __all__ = [
+    "TrackListView",
     "TrackViewSet",
 ]
 
@@ -33,6 +39,39 @@ __all__ = [
         summary=_("List of tracks"),
         responses={200: TrackListSerializer(many=True)},
     ),
+)
+class TrackListView(
+    GenericViewSet,
+):
+    permission_classes = [
+        AllowAny,
+    ]
+    filter_backends = [
+        DjangoFilterBackend,
+        SearchFilter,
+        OrderingFilter,
+    ]
+    filterset_class = TrackFilterSet
+    search_fields = [
+        "title",
+        "description",
+    ]
+    ordering_fields = [
+        "genre",
+        "title",
+        "duration",
+        "release_date",
+        "created",
+        "modified",
+    ]
+    serializer_class = [TrackListSerializer]
+
+    def get_queryset(self):
+        # TODO use selector instead
+        return Track.objects.all()
+
+
+@extend_schema_view(
     retrieve=extend_schema(
         summary=_("Track"),
         responses={200: TrackListSerializer},
@@ -54,29 +93,15 @@ __all__ = [
 )
 @extend_schema(tags=[SCHEMA_TAG_MUSIC])
 class TrackViewSet(
-    ModelViewSet,
+    TrackListView,
+    CreateModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+    DestroyModelMixin,
 ):
     permission_classes = [
         IsAuthenticatedOrReadOnly,
         IsOwner,
-    ]
-    filter_backends = [
-        DjangoFilterBackend,
-        SearchFilter,
-        OrderingFilter,
-    ]
-    filterset_class = TrackFilterSet
-    search_fields = [
-        "title",
-        "description",
-    ]
-    ordering_fields = [
-        "genre",
-        "title",
-        "duration",
-        "release_date",
-        "created",
-        "modified",
     ]
 
     def get_serializer_class(self):
@@ -84,10 +109,6 @@ class TrackViewSet(
             return TrackRetrieveSerializer
         if self.action == "list":
             return TrackListSerializer
-
-    def get_queryset(self):
-        # TODO use selector instead
-        return Track.objects.all()
 
     def create(self, request, *args, **kwargs):
         input_ = TrackCreateSerializer(data=request.data)

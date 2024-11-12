@@ -1,9 +1,11 @@
 from api.common import (
     SCHEMA_TAG_MUSIC,
+    AllowAny,
     DjangoFilterBackend,
+    GenericViewSet,
     IsAuthenticatedOrReadOnly,
     IsOwner,
-    ModelViewSet,
+    ListModelMixin,
     OrderingFilter,
     Response,
     SearchFilter,
@@ -23,14 +25,16 @@ from db.music.models import Album
 __all__ = [
     "AlbumViewSet",
     "AlbumTrackViewSet",
+    "AlbumListView",
 ]
 
 
-@extend_schema(tags=[SCHEMA_TAG_MUSIC])
-class AlbumViewSet(ModelViewSet):
+class AlbumListView(
+    GenericViewSet,
+    ListModelMixin,
+):
     permission_classes = [
-        IsAuthenticatedOrReadOnly,
-        IsOwner,
+        AllowAny,
     ]
     filter_backends = [
         DjangoFilterBackend,
@@ -47,6 +51,14 @@ class AlbumViewSet(ModelViewSet):
         "release_date",
         "created",
         "modified",
+    ]
+
+
+@extend_schema(tags=[SCHEMA_TAG_MUSIC])
+class AlbumViewSet(AlbumListView):
+    permission_classes = [
+        IsAuthenticatedOrReadOnly,
+        IsOwner,
     ]
 
     def get_serializer_class(self):
