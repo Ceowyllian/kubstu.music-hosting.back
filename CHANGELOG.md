@@ -1,5 +1,37 @@
 # CHANGELOG
 
+## v14.2.0 (2024-11-13)
+
+### Ci
+
+* ci(github): fix directory name ([`54ae695`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/54ae695ad0bdadb299d42e39036278c3311defef))
+
+* ci(github): add GitHub Actions config files ([`6c613f2`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/6c613f2d44133c9b1d05f276cae9bc565da076c0))
+
+### Documentation
+
+* docs(likes): add schema to likes API ([`6afcb58`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/6afcb586f0d2de19576bcde4866cca5de34d4c41))
+
+* docs(comments): add schema to comments API ([`845bee2`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/845bee2238d6e95e3e8f8a2deda40ddd6170c1dc))
+
+### Feature
+
+* feat(music): add CRUD services for album ([`193f5d8`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/193f5d883ff71ed2391407535c42275e2d236fe9))
+
+* feat(api): add SCHEMA_TAG_MY to api.comon ([`7ea98a5`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/7ea98a5d3fc5132b9fc356d2819abfacbb52de17))
+
+### Fix
+
+* fix(music): delete collection items instead of tracks ([`0fa0c79`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/0fa0c7917249fc9eea94e0a6d570917cfe9f466c))
+
+### Refactor
+
+* refactor(api): remove obsolete playlist service functions ([`dc568de`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/dc568de510fc531976b4413c6522100416a3c48d))
+
+* refactor(music): create separate *ListView classes ([`e98e128`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/e98e12875b9031744f1de21f3ae0239d3e8ca273))
+
+* refactor(likes): rename services.social to services.likes ([`626bb2d`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/626bb2df6ba03b85389fc83c911aa32a0478877e))
+
 ## v14.1.0 (2024-11-06)
 
 ### Feature
