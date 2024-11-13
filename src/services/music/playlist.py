@@ -2,14 +2,13 @@ from django.db import transaction
 
 from db.music.models import Playlist
 from services.common import model_update
+from services.music.track_collection import TrackCollectionService
 
 __all__ = [
     "playlist_create",
     "playlist_update",
     "playlist_destroy",
 ]
-
-from services.music import TrackCollectionService
 
 
 def playlist_create(

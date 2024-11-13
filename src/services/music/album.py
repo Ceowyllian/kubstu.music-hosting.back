@@ -2,7 +2,7 @@ from django.db import transaction
 
 from db.music.models import Album
 from services.common import model_update
-from services.music import TrackCollectionService
+from services.music.track_collection import TrackCollectionService
 
 __all__ = [
     "album_create",
