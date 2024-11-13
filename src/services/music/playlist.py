@@ -9,6 +9,8 @@ __all__ = [
     "playlist_destroy",
 ]
 
+from services.music import TrackCollectionService
+
 
 def playlist_create(
     *,
@@ -31,5 +33,5 @@ def playlist_update(*, playlist: Playlist, name: str):
 
 @transaction.atomic()
 def playlist_destroy(playlist: Playlist):
+    TrackCollectionService(playlist).items_qs.delete()
     playlist.delete()
-    playlist.tracks.all().delete()
