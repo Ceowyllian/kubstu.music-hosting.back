@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v14.2.1 (2024-11-13)
+
+### Fix
+
+* fix(music): fix ImportError ([`1149da4`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/1149da4bf200889fe7f7ab312cdcec5e924f18cc))
+
 ## v14.2.0 (2024-11-13)
 
 ### Ci
