@@ -21,6 +21,7 @@ from api.music.serializers import (
 )
 from api.music.views.track_collection_base import TrackCollectionViewSet
 from db.music.models import Album
+from services.music import album_create, album_destroy, album_update
 
 __all__ = [
     "AlbumViewSet",
@@ -75,8 +76,7 @@ class AlbumViewSet(AlbumListView):
         input_ = AlbumCreateSerializer(data=request.data)
         input_.is_valid(raise_exception=True)
 
-        # TODO call album_create service
-        album = None
+        album = album_create(user=request.user, **input_.validated_data)
 
         output = AlbumWithTracksSerializer(instance=album)
         return Response(output.data, status.HTTP_201_CREATED)
@@ -85,14 +85,13 @@ class AlbumViewSet(AlbumListView):
         input_ = AlbumUpdateSerializer(data=request.data)
         input_.is_valid(raise_exception=True)
 
-        # TODO call album_update service
-        album = None
+        album = album_update(self.get_object(), **input_.validated_data)
 
         output = AlbumSerializer(instance=album)
         return Response(output.data, status=status.HTTP_200_OK)
 
     def destroy(self, request, *args, **kwargs):
-        # TODO call album_update service
+        album_destroy(self.get_object())
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
