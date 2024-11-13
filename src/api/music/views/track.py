@@ -9,6 +9,7 @@ from api.common import (
     GenericViewSet,
     IsAuthenticatedOrReadOnly,
     IsOwner,
+    ListModelMixin,
     OrderingFilter,
     Response,
     RetrieveModelMixin,
@@ -42,6 +43,7 @@ __all__ = [
 )
 class TrackListView(
     GenericViewSet,
+    ListModelMixin,
 ):
     permission_classes = [
         AllowAny,
