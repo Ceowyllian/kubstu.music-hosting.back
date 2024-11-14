@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## v14.3.0 (2024-11-14)
+
+### Chore
+
+* chore(music): add TODO ([`56a1a05`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/56a1a05d1529dc216c2bcf8b59835dd8e7265be0))
+
+### Feature
+
+* feat(my): add API to get the current user&#39;s content ([`75232e6`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/75232e60bafce1085df0278d5e88f504cddef3c5))
+
+### Fix
+
+* fix(music): add ListModelMixin to TrackListView ([`3e97826`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/3e978268515f6c897c2894cc75fac01cf5d6052c))
+
 ## v14.2.1 (2024-11-13)
 
 ### Fix
