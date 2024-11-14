@@ -24,6 +24,7 @@ def track_create(
     description,
     release_date,
 ):
+    # TODO determine duration
     track = Track(
         owner=user.person,
         sound_file=sound_file,
