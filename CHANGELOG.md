@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v14.4.0 (2024-11-21)
+
+### Feature
+
+* feat(search): add an API for searching by people and music ([`1e4638f`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/1e4638f83bc58b20ed0362be6b9ef10b4bafd416))
+
+* feat(api): add SCHEMA_TAG_SEARCH to api.common ([`0227db9`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/0227db9bcc9b20833ae955938cc5d08c54e59dee))
+
 ## v14.3.0 (2024-11-14)
 
 ### Chore
