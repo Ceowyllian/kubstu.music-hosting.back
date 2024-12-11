@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## v15.0.0 (2024-12-11)
+
+### Breaking
+
+* fix(person)!: replace CharField with TextField ([`355dd6d`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/355dd6db252e272a87000529f868b0329b40ed2f))
+
+### Build
+
+* build(docker): add docker configuration files ([`26788d2`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/26788d224ce7192ae2da0da17cde44583d7f1380))
+
+### Feature
+
+* feat(person): create person instance after user registration ([`0303778`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/03037783a2ea7f51905945044ce26a7590a51622))
+
 ## v14.4.0 (2024-11-21)
 
 ### Feature
