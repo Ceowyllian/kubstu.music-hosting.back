@@ -26,7 +26,7 @@ class Person(BaseModel):
         editable=True,
         verbose_name=_("Avatar"),
     )
-    summary = models.CharField(
+    summary = models.TextField(
         null=True,
         blank=True,
         verbose_name=_("Summary"),
