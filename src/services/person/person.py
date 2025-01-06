@@ -3,7 +3,7 @@ from djoser.signals import user_registered
 from db.person.models import Person
 
 
-def create_person(sender, user, request):
+def create_person(sender, user, request, **kwargs):
     person = Person(user=user)
     person.full_clean()
     person.save()
