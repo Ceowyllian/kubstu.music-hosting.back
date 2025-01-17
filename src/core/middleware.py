@@ -7,4 +7,3 @@ class ExtractTokenMiddleware(MiddlewareMixin):
         token = request.COOKIES.get("auth_token", None)
         if token:
             request.META["HTTP_AUTHORIZATION"] = f"Token {token}"
-            print(request.META["HTTP_AUTHORIZATION"])
