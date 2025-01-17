@@ -1,1 +1,1 @@
-from .person import create_person
+from .person import *  # noqa
