@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v15.1.0 (2025-01-17)
+
+### Feature
+
+* feat(auth): pass auth token using httponly cookie ([`da7a75c`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/da7a75cdf5d309433520100ea518110075a3f8d2))
+
+* feat(me): add an API to get information about the currently logged in user ([`5d4f983`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/5d4f983fa26e2a49b23436bf2d6d1f55997fd55f))
+
+### Fix
+
+* fix(person): bind the signal handler properly ([`3138e4e`](https://github.com/Ceowyllian/kubstu.music-hosting.back/commit/3138e4e6e0dcae88a40a5db802d3191bd702a189))
+
 ## v15.0.0 (2024-12-11)
 
 ### Breaking
