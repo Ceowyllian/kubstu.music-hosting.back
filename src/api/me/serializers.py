@@ -1,8 +1,9 @@
-from api.common import DataObjectSerializer, fields
+from api.common import DataObjectSerializer, EmptySerializer, fields
 from db.person.models import Person
 
 __all__ = [
     "MeSerializer",
+    "PersonUpdateSerializer",
 ]
 
 
@@ -20,3 +21,9 @@ class MeSerializer(DataObjectSerializer):
             "summary",
             "public_email",
         ]
+
+
+class PersonUpdateSerializer(EmptySerializer):
+    avatar = fields.ImageField()
+    summary = fields.CharField()
+    public_email = fields.CharField()
