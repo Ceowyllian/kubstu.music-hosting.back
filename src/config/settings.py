@@ -20,6 +20,7 @@ base_settings = [
     "components/debug.py",
     "components/djoser.py",
     "components/installed_apps.py",
+    "components/media.py",
     "components/middleware.py",
     "components/oas3.py",
     "components/rest.py",
