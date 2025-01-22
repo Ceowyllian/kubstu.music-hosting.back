@@ -24,6 +24,13 @@ class MeSerializer(DataObjectSerializer):
 
 
 class PersonUpdateSerializer(EmptySerializer):
-    avatar = fields.ImageField()
-    summary = fields.CharField()
-    public_email = fields.CharField()
+    avatar = fields.ImageField(
+        allow_null=True,
+    )
+    summary = fields.CharField(
+        allow_null=True,
+    )
+    public_email = fields.CharField(
+        allow_null=True,
+        allow_blank=True,
+    )
