@@ -1,6 +1,9 @@
+from uuid import uuid4
+
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from PIL import Image
 
 from db.common import BaseModel
 
@@ -9,6 +12,12 @@ __all__ = [
 ]
 
 User = get_user_model()
+
+
+def avatar_path(instance, _):
+    with Image.open(instance.avatar) as im:
+        extension = im.format
+    return f"avatars/{uuid4()}.{extension}"
 
 
 class Person(BaseModel):
@@ -20,7 +29,7 @@ class Person(BaseModel):
         verbose_name=_("User"),
     )
     avatar = models.ImageField(
-        upload_to="avatars",
+        upload_to=avatar_path,
         null=True,
         blank=True,
         editable=True,
