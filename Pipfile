@@ -17,6 +17,7 @@ drf-spectacular = "0.27.2"
 drf-nested-routers = "0.94.1"
 django-filter = "24.3"
 pillow = "10.4.0"
+soundfile = "0.13.0"
 
 [dev-packages]
 Faker = "28.1.0"
