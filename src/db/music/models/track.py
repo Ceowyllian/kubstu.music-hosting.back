@@ -1,5 +1,9 @@
+from uuid import uuid4
+
+import soundfile as sf
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from PIL import Image
 
 from db.comments.models import WithCommentsMixin
 from db.common import BaseModel
@@ -12,6 +16,18 @@ __all__ = [
 ]
 
 
+def sound_file_path(instance, _):
+    with sf.SoundFile(instance.sound_file, "rb") as f:
+        extension = f.format
+    return f"tracks/{uuid4()}.{extension}"
+
+
+def image_path(instance, _):
+    with Image.open(instance.avatar) as im:
+        extension = im.format
+    return f"track_images/{uuid4()}.{extension}"
+
+
 class Track(
     BaseModel,
     WithOwnerMixin,
@@ -20,16 +36,16 @@ class Track(
 ):
 
     sound_file = models.FileField(
-        upload_to="tracks",
+        upload_to=sound_file_path,
         blank=False,
         editable=False,
         null=False,
         verbose_name=_("Sound file"),
     )
     image = models.ImageField(
+        upload_to=image_path,
         null=True,
         blank=True,
-        upload_to="tracks_images",
         verbose_name=_("Image"),
     )
     genre = models.IntegerField(

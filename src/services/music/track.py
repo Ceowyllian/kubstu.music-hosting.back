@@ -1,6 +1,7 @@
-from datetime import date
+from datetime import date, timedelta
 from typing import Any, TypedDict
 
+import soundfile as sf
 from django.db import transaction
 
 from db.likes.models import Like
@@ -24,7 +25,9 @@ def track_create(
     description=None,
     release_date=None,
 ):
-    # TODO determine duration
+    with sf.SoundFile(sound_file) as f:
+        duration = timedelta(seconds=len(f) / f.samplerate)
+
     track = Track(
         owner=user.person,
         sound_file=sound_file,
@@ -33,6 +36,7 @@ def track_create(
         title=title,
         description=description,
         release_date=release_date,
+        duration=duration,
     )
     track.full_clean()
     track.save()
