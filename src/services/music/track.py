@@ -17,12 +17,12 @@ __all__ = [
 def track_create(
     *,
     user,
-    sound_file,
-    image,
-    genre,
     title,
-    description,
-    release_date,
+    sound_file,
+    image=None,
+    genre=None,
+    description=None,
+    release_date=None,
 ):
     # TODO determine duration
     track = Track(
