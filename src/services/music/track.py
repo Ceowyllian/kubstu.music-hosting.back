@@ -3,6 +3,7 @@ from typing import Any, TypedDict
 
 import soundfile as sf
 from django.db import transaction
+from rest_framework.exceptions import ValidationError
 
 from db.likes.models import Like
 from db.music.models import AlbumTrack, PlaylistTrack, Track
@@ -25,8 +26,11 @@ def track_create(
     description=None,
     release_date=None,
 ):
-    with sf.SoundFile(sound_file) as f:
-        duration = timedelta(seconds=len(f) / f.samplerate)
+    try:
+        with sf.SoundFile(sound_file) as f:
+            duration = timedelta(seconds=len(f) / f.samplerate)
+    except sf.LibsndfileError as e:
+        raise ValidationError({"avatar": e.error_string}) from e
 
     track = Track(
         owner=user.person,
