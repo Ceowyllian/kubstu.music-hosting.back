@@ -23,7 +23,7 @@ def sound_file_path(instance, _):
 
 
 def image_path(instance, _):
-    with Image.open(instance.avatar) as im:
+    with Image.open(instance.image) as im:
         extension = im.format
     return f"track_images/{uuid4()}.{extension}"
 
