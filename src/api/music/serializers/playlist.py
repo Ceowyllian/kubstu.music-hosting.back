@@ -30,6 +30,7 @@ class PlaylistWithTracksSerializer(DataObjectSerializer):
     owner = PersonSerializer()
     tracks = fields.ListField(
         child=TrackListSerializer(),
+        source="tracks.all",
         help_text=_("Tracks"),
     )
 

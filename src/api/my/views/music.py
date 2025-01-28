@@ -1,6 +1,6 @@
 from api.common import SCHEMA_TAG_MY, IsAuthenticated, extend_schema
 from api.music.views import AlbumListView, PlaylistListView, TrackListView
-from db.music.models import Album, Playlist, Track
+from db.music.models import Album, Track
 
 __all__ = [
     "MyTracksView",
@@ -22,7 +22,13 @@ class MyPlaylistsView(PlaylistListView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return Playlist.objects.filter(owner=self.request.user.person)
+        return (
+            super()
+            .get_queryset()
+            .filter(
+                owner=self.request.user.person,
+            )
+        )
 
 
 @extend_schema(tags=[SCHEMA_TAG_MY])

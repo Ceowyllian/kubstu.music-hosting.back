@@ -72,7 +72,7 @@ class PlaylistListView(
 
     def get_queryset(self):
         # TODO use selector instead
-        return playlist_list()
+        return playlist_list().select_related("owner", "owner__user")
 
 
 @extend_schema_view(
@@ -119,8 +119,7 @@ class PlaylistViewSet(
         input_.is_valid(raise_exception=True)
 
         playlist = playlist_create(user=request.user, **input_.validated_data)
-
-        output = PlaylistSerializer(instance=playlist)
+        output = PlaylistWithTracksSerializer(instance=playlist)
         return Response(output.data, status.HTTP_201_CREATED)
 
     def update(self, request, *args, **kwargs):
@@ -129,7 +128,7 @@ class PlaylistViewSet(
 
         playlist = playlist_update(playlist=self.get_object(), **input_.validated_data)
 
-        output = PlaylistSerializer(instance=playlist)
+        output = PlaylistWithTracksSerializer(instance=playlist)
         return Response(output.data, status.HTTP_200_OK)
 
     def destroy(self, request, *args, **kwargs):
