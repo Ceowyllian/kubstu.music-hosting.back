@@ -68,7 +68,7 @@ class PlaylistListView(
         "created",
         "modified",
     ]
-    serializer_class = [PlaylistSerializer]
+    serializer_class = PlaylistSerializer
 
     def get_queryset(self):
         # TODO use selector instead
