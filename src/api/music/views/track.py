@@ -66,7 +66,7 @@ class TrackListView(
         "created",
         "modified",
     ]
-    serializer_class = [TrackListSerializer]
+    serializer_class = TrackListSerializer
 
     def get_queryset(self):
         # TODO use selector instead

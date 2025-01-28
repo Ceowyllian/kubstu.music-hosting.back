@@ -8,6 +8,8 @@ __all__ = [
     "TrackUpdateSerializer",
 ]
 
+from db.person.models import Person
+
 
 class TrackRetrieveSerializer(DataObjectSerializer):
     class Meta(DataObjectSerializer.Meta):
@@ -23,14 +25,33 @@ class TrackRetrieveSerializer(DataObjectSerializer):
         ]
 
 
+class TrackOwnerSerializer(DataObjectSerializer):
+    username = fields.CharField(
+        source="user.username",
+    )
+
+    class Meta(DataObjectSerializer.Meta):
+        model = Person
+        fields = DataObjectSerializer.Meta.fields + [
+            "user_id",
+            "username",
+            "avatar",
+        ]
+
+
 class TrackListSerializer(DataObjectSerializer):
+    owner = TrackOwnerSerializer()
+
     class Meta(DataObjectSerializer.Meta):
         model = Track
         fields = DataObjectSerializer.Meta.fields + [
+            "image",
+            "sound_file",
             "genre",
             "title",
             "duration",
             "release_date",
+            "owner",
         ]
 
 
