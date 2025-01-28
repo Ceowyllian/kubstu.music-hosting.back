@@ -28,7 +28,12 @@ from api.music.serializers import (
 )
 from api.music.views.track_collection_base import TrackCollectionViewSet
 from db.music.models import Playlist
-from services.music import playlist_create, playlist_destroy, playlist_update
+from services.music import (
+    playlist_create,
+    playlist_destroy,
+    playlist_list,
+    playlist_update,
+)
 
 __all__ = [
     "PlaylistViewSet",
@@ -67,7 +72,7 @@ class PlaylistListView(
 
     def get_queryset(self):
         # TODO use selector instead
-        return Playlist.objects.all()
+        return playlist_list()
 
 
 @extend_schema_view(

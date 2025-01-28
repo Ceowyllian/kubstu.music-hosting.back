@@ -1,6 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 
-from api.common import DataObjectSerializer, EmptySerializer, fields
+from api.common import DataObjectSerializer, EmptySerializer, PersonSerializer, fields
 from api.music.serializers.track import TrackListSerializer
 from db.music.models import Album
 
@@ -13,16 +13,20 @@ __all__ = [
 
 
 class AlbumSerializer(DataObjectSerializer):
+    owner = PersonSerializer()
+
     class Meta(DataObjectSerializer.Meta):
         model = Album
         fields = DataObjectSerializer.Meta.fields + [
             "title",
             "description",
             "release_date",
+            "owner",
         ]
 
 
 class AlbumWithTracksSerializer(DataObjectSerializer):
+    owner = PersonSerializer()
     tracks = fields.ListField(
         child=TrackListSerializer(),
         help_text=_("Tracks"),
@@ -31,6 +35,7 @@ class AlbumWithTracksSerializer(DataObjectSerializer):
     class Meta(DataObjectSerializer):
         model = Album
         fields = DataObjectSerializer.Meta.fields + [
+            "owner",
             "title",
             "description",
             "release_date",

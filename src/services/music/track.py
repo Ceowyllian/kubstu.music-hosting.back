@@ -30,7 +30,7 @@ def track_create(
         with sf.SoundFile(sound_file) as f:
             duration = timedelta(seconds=len(f) / f.samplerate)
     except sf.LibsndfileError as e:
-        raise ValidationError({"avatar": e.error_string}) from e
+        raise ValidationError({"sound_file": e.error_string}) from e
 
     track = Track(
         owner=user.person,

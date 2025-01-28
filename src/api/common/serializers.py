@@ -2,12 +2,16 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 
 from db.common import BaseModel
+from db.person.models import Person
+
+from . import fields
 
 __all__ = [
     "ReadOnlyMixin",
     "ModelSerializer",
     "DataObjectSerializer",
     "EmptySerializer",
+    "PersonSerializer",
 ]
 
 
@@ -63,3 +67,17 @@ class DataObjectSerializer(ModelSerializer):
 
 class EmptySerializer(serializers.Serializer):
     pass
+
+
+class PersonSerializer(DataObjectSerializer):
+    username = fields.CharField(
+        source="user.username",
+    )
+
+    class Meta(DataObjectSerializer.Meta):
+        model = Person
+        fields = DataObjectSerializer.Meta.fields + [
+            "user_id",
+            "username",
+            "avatar",
+        ]

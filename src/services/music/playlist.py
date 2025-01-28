@@ -1,4 +1,5 @@
 from django.db import transaction
+from django.db.models import Count
 
 from db.music.models import Playlist
 from services.common import model_update
@@ -8,6 +9,7 @@ __all__ = [
     "playlist_create",
     "playlist_update",
     "playlist_destroy",
+    "playlist_list",
 ]
 
 
@@ -34,3 +36,7 @@ def playlist_update(*, playlist: Playlist, name: str):
 def playlist_destroy(playlist: Playlist):
     TrackCollectionService(playlist).items_qs.delete()
     playlist.delete()
+
+
+def playlist_list():
+    return Playlist.objects.annotate(total_tracks=Count("playlisttrack"))

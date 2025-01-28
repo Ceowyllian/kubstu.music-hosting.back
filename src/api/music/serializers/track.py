@@ -1,4 +1,4 @@
-from api.common import DataObjectSerializer, EmptySerializer, fields
+from api.common import DataObjectSerializer, EmptySerializer, PersonSerializer, fields
 from db.music.models import GENRE_CHOICES, Track
 
 __all__ = [
@@ -7,8 +7,6 @@ __all__ = [
     "TrackCreateSerializer",
     "TrackUpdateSerializer",
 ]
-
-from db.person.models import Person
 
 
 class TrackRetrieveSerializer(DataObjectSerializer):
@@ -25,22 +23,8 @@ class TrackRetrieveSerializer(DataObjectSerializer):
         ]
 
 
-class TrackOwnerSerializer(DataObjectSerializer):
-    username = fields.CharField(
-        source="user.username",
-    )
-
-    class Meta(DataObjectSerializer.Meta):
-        model = Person
-        fields = DataObjectSerializer.Meta.fields + [
-            "user_id",
-            "username",
-            "avatar",
-        ]
-
-
 class TrackListSerializer(DataObjectSerializer):
-    owner = TrackOwnerSerializer()
+    owner = PersonSerializer()
 
     class Meta(DataObjectSerializer.Meta):
         model = Track

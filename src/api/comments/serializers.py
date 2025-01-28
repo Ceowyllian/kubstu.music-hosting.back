@@ -1,4 +1,4 @@
-from api.common import DataObjectSerializer, EmptySerializer, fields
+from api.common import DataObjectSerializer, EmptySerializer, PersonSerializer, fields
 
 __all__ = [
     "NestedCommentListSerializer",
@@ -28,12 +28,15 @@ class CommentCreateSerializer(EmptySerializer):
 
 
 class CommentRetrieveSerializer(DataObjectSerializer):
+    owner = PersonSerializer()
+
     class Meta(DataObjectSerializer.Meta):
         model = Comment
         fields = DataObjectSerializer.Meta.fields + [
             "subject",
             "parent_id",
             "status",
+            "owner",
         ]
 
 
