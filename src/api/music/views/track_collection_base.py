@@ -57,9 +57,9 @@ class TrackCollectionViewSet(
         input_ = CollectionAddTrackSerializer(data=request.data)
         input_.is_valid(raise_exception=True)
 
-        track = self.service.add_track(**input_.validated_data)
+        collection_item = self.service.add_track(**input_.validated_data)
 
-        output = TrackRetrieveSerializer(instance=track)
+        output = TrackRetrieveSerializer(instance=collection_item.track)
 
         return Response(output.data, status.HTTP_201_CREATED)
 

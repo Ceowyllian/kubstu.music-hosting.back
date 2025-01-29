@@ -1,5 +1,5 @@
 from django.db import transaction
-from django.db.models import F, Max, QuerySet
+from django.db.models import F, QuerySet
 
 from db.music.models import Track
 from db.music.models.track_collection import TrackCollection, TrackCollectionItem
@@ -31,7 +31,7 @@ class TrackCollectionService:
         return self.items_qs.get(track_id=track_id)
 
     def get_count(self) -> int:
-        return self.items_qs.aggregate(Max("number"))["number__max"]
+        return self.items_qs.count()
 
     def add_track(self, track_id: Track):
         item = self.item_class(
